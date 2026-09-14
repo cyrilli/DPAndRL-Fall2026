@@ -1,6 +1,6 @@
 # Dynamic Programming and Reinforcement Learning - Fall 2026
 
-An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. The header identifies the course; institutional affiliation appears in the course information and footer.
+An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. Home contains a brief course description, class details, updates and instructor links. Schedule is the single index for dates, topics and materials; individual lecture outlines remain linked from it. The old lectures.html address redirects to Schedule.
 
 ## Contents
 
