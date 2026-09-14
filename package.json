@@ -1,0 +1,10 @@
+{
+  "name": "dp-rl-course-fall-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "English course website for Dynamic Programming and Reinforcement Learning, Fall 2026",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node check.mjs"
+  }
+}

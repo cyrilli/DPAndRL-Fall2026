@@ -1,0 +1,203 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Tsinghua DP RL Fall 2026//Course Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:DP and RL - Tsinghua Fall 2026
+X-WR-TIMEZONE:Asia/Shanghai
+BEGIN:VEVENT
+UID:dp-rl-2026-20260915@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20260915T015000Z
+DTEND:20260915T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 1. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Sequential
+  decisions and dynamic programming.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20260922@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20260922T015000Z
+DTEND:20260922T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 2. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Finite-hor
+ izon DP and shortest paths.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20260929@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20260929T015000Z
+DTEND:20260929T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 3. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Stochastic
+  dynamic programming.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261013@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261013T015000Z
+DTEND:20261013T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 5. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Infinite-h
+ orizon problems.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261020@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261020T015000Z
+DTEND:20261020T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 6. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Value iter
+ ation and policy iteration.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261027@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261027T015000Z
+DTEND:20261027T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 7. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Approximat
+ e DP and information states.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261103@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261103T015000Z
+DTEND:20261103T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 8. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Lab 1: res
+ ource-constrained path planning.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261110@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261110T015000Z
+DTEND:20261110T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 9. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
+ -12:15 (China Standard Time). Based on the departmental timetable and p
+ ublic university calendar. Any holiday teaching adjustment is pending v
+ erification. No October 6 event is included. Proposed topic: Learning f
+ rom interaction and bandits.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261117@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261117T015000Z
+DTEND:20261117T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 10. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Monte Car
+ lo methods.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261124@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261124T015000Z
+DTEND:20261124T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 11. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Temporal-
+ difference learning and control.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261201@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261201T015000Z
+DTEND:20261201T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 12. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Multi-ste
+ p learning and planning with experience.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261208@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261208T015000Z
+DTEND:20261208T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 13. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Function 
+ approximation and deep Q-learning.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261215@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261215T015000Z
+DTEND:20261215T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 14. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Policy gr
+ adients and actor-critic methods.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261222@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261222T015000Z
+DTEND:20261222T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 15. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Reinforce
+ ment learning for language models.
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-rl-2026-20261229@course.chuanhao-li.com
+DTSTAMP:20260914T000000Z
+DTSTART:20261229T015000Z
+DTEND:20261229T041500Z
+SUMMARY:Dynamic Programming and Reinforcement Learning
+LOCATION:Teaching Building 4\, Room 4401
+DESCRIPTION:Teaching week 16. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
+ 0-12:15 (China Standard Time). Based on the departmental timetable and 
+ public university calendar. Any holiday teaching adjustment is pending 
+ verification. No October 6 event is included. Proposed topic: Lab 2: le
+ arning for sequential decisions.
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,21 @@
+{
+  "title": "Dynamic Programming and Reinforcement Learning",
+  "term": "Fall 2026",
+  "institution": "Tsinghua University",
+  "department": "Department of Industrial Engineering",
+  "room": "Teaching Building 4, Room 4401",
+  "time": "Tuesdays, 09:50-12:15",
+  "timezone": "Asia/Shanghai",
+  "teachingStart": "2026-09-14",
+  "teachingEnd": "2027-01-03",
+  "verifiedOn": "2026-09-14",
+  "makeupDate": null,
+  "calendarUrl": "https://www.tsinghua.edu.cn/zjqh/syxx/qhxl.htm",
+  "calendarImageUrl": "https://www.tsinghua.edu.cn/xl/2026qiuji.jpg",
+  "adjustmentNoticeUrl": "https://xxbg.cic.tsinghua.edu.cn/oath/detail.jsp?boardid=2709&seq=177015",
+  "noticeIndexUrl": "https://learning.tsinghua.edu.cn/xwgg/tzgg.htm",
+  "instructors": [
+    {"name":"Chuanhao Li","title":"Assistant Professor","email":"chuanhao-li@mail.tsinghua.edu.cn","url":"https://www.chuanhao-li.com/","publications":"https://www.chuanhao-li.com/publications/","office":"Shunde Building, Room 402B","photo":"assets/chuanhao-li.png","bio":"Learning, decision-making and strategic interaction in multi-agent systems, including online collaborative learning and LLM-assisted decision-making."},
+    {"name":"Chengli Zhu","title":"Senior Engineer","email":"zhcl@tsinghua.edu.cn","url":"https://www.ie.tsinghua.edu.cn/info/1057/1094.htm"}
+  ]
+}

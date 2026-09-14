@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "title": "Sequential decisions and dynamic programming",
+    "module": "Dynamic programming",
+    "kind": "Lecture",
+    "summary": "States, actions, policies and long-term objectives. Solve a small route-planning problem by backward induction.",
+    "objectives": [
+      "Model a sequential decision problem using states, actions, transitions and costs.",
+      "Distinguish a policy from a fixed action sequence.",
+      "Explain backward induction and the connection between DP and RL."
+    ],
+    "reading": "Bertsekas, Dynamic Programming and Optimal Control, Volume I, Chapter 1; Sutton and Barto, Chapter 1."
+  },
+  {
+    "id": 2,
+    "title": "Finite-horizon DP and shortest paths",
+    "module": "Dynamic programming",
+    "kind": "Lecture",
+    "summary": "The principle of optimality, deterministic finite-state models, and backward computation on a layered graph.",
+    "objectives": [
+      "Write a finite-horizon Bellman recursion with a terminal condition.",
+      "Recover an optimal policy from a value table.",
+      "Compare enumeration with dynamic programming."
+    ],
+    "reading": "Bertsekas, Volume I, Chapters 1-2."
+  },
+  {
+    "id": 3,
+    "title": "Stochastic dynamic programming",
+    "module": "Dynamic programming",
+    "kind": "Lecture",
+    "summary": "Random transitions, feedback policies, and expected total cost in inventory and stopping problems.",
+    "objectives": [
+      "Explain why feedback matters under uncertainty.",
+      "Calculate an expected cost-to-go.",
+      "Build and solve a small stochastic DP model."
+    ],
+    "reading": "Bertsekas, Volume I, Chapter 3."
+  },
+  {
+    "id": 4,
+    "title": "Infinite-horizon problems",
+    "module": "Dynamic programming",
+    "kind": "Lecture",
+    "summary": "Discounting, stationary policies, Bellman equations, and the intuition behind contraction.",
+    "objectives": [
+      "Explain the role of a discount factor.",
+      "Formulate an infinite-horizon discounted MDP.",
+      "Connect finite-horizon recursions to a fixed-point equation."
+    ],
+    "reading": "Sutton and Barto, Chapter 3; MIT 6.231 infinite-horizon lectures."
+  },
+  {
+    "id": 5,
+    "title": "Value iteration and policy iteration",
+    "module": "Dynamic programming",
+    "kind": "Lecture",
+    "summary": "Policy evaluation, policy improvement, and algorithms for solving a known finite MDP.",
+    "objectives": [
+      "Implement value iteration and policy iteration.",
+      "Distinguish evaluation from control.",
+      "Interpret stopping criteria and approximation error."
+    ],
+    "reading": "Sutton and Barto, Chapter 4."
+  },
+  {
+    "id": 6,
+    "title": "Approximate DP and information states",
+    "module": "Dynamic programming",
+    "kind": "Lecture",
+    "summary": "The limits of exact computation, rollout and approximate values, with an introduction to partial observations.",
+    "objectives": [
+      "Identify when a chosen state omits decision-relevant information.",
+      "Explain the purpose of belief or augmented states.",
+      "Describe how approximation and rollout extend exact planning."
+    ],
+    "reading": "Selected MIT 6.231 lectures on imperfect information and approximate DP."
+  },
+  {
+    "id": 7,
+    "title": "Lab 1: resource-constrained path planning",
+    "module": "Practice",
+    "kind": "Lab",
+    "summary": "Use an expanded state to plan a route under a resource budget and examine computational tradeoffs.",
+    "objectives": [
+      "Design a state representation that includes a resource budget.",
+      "Implement and check a DP solution on a small instance.",
+      "Explain feasibility, optimality and computational cost."
+    ],
+    "reading": "Review Lectures 2, 3 and 6. Any confirmed lab instructions will appear on the Assignments page."
+  },
+  {
+    "id": 8,
+    "title": "Learning from interaction and bandits",
+    "module": "Reinforcement learning",
+    "kind": "Lecture",
+    "summary": "The RL problem, sampled experience, and exploration versus exploitation in multi-armed bandits.",
+    "objectives": [
+      "Distinguish planning with a model from learning through interaction.",
+      "Implement simple action-value estimates for a bandit.",
+      "Explain exploration and evaluate an exploration strategy."
+    ],
+    "reading": "Sutton and Barto, Chapters 1-2."
+  },
+  {
+    "id": 9,
+    "title": "Monte Carlo methods",
+    "module": "Reinforcement learning",
+    "kind": "Lecture",
+    "summary": "Learning values from complete episodes, Monte Carlo control, and on-policy versus off-policy data.",
+    "objectives": [
+      "Estimate a value from sampled returns.",
+      "Explain policy improvement using estimated action values.",
+      "Describe the difference between behavior and target policies."
+    ],
+    "reading": "Sutton and Barto, Chapter 5."
+  },
+  {
+    "id": 10,
+    "title": "Temporal-difference learning and control",
+    "module": "Reinforcement learning",
+    "kind": "Lecture",
+    "summary": "Bootstrapping, TD prediction, SARSA and Q-learning, using a common tabular environment.",
+    "objectives": [
+      "Explain the TD error and bootstrapping.",
+      "Implement SARSA and Q-learning.",
+      "Compare on-policy and off-policy control."
+    ],
+    "reading": "Sutton and Barto, Chapter 6."
+  },
+  {
+    "id": 11,
+    "title": "Multi-step learning and planning with experience",
+    "module": "Reinforcement learning",
+    "kind": "Lecture",
+    "summary": "The relationship between Monte Carlo and TD, n-step returns, and combining planning with learned experience.",
+    "objectives": [
+      "Compute an n-step target.",
+      "Discuss bias, variance and update frequency.",
+      "Explain how a learned model can support planning."
+    ],
+    "reading": "Sutton and Barto, Chapters 7-8."
+  },
+  {
+    "id": 12,
+    "title": "Function approximation and deep Q-learning",
+    "module": "Reinforcement learning",
+    "kind": "Lecture",
+    "summary": "Generalization beyond value tables, linear approximation, and key design choices in deep Q-learning.",
+    "objectives": [
+      "Represent a value function with features or a neural network.",
+      "Explain replay and target networks.",
+      "Recognize instability risks when approximation and bootstrapping interact."
+    ],
+    "reading": "Sutton and Barto, Chapters 9-11; selected Stanford CS234 materials."
+  },
+  {
+    "id": 13,
+    "title": "Policy gradients and actor-critic methods",
+    "module": "Reinforcement learning",
+    "kind": "Lecture",
+    "summary": "Direct policy optimization, REINFORCE, variance reduction and actor-critic methods.",
+    "objectives": [
+      "Explain how a stochastic policy can be optimized directly.",
+      "Interpret a policy-gradient estimate and the role of a baseline.",
+      "Distinguish the actor and critic in an actor-critic method."
+    ],
+    "reading": "Sutton and Barto, Chapter 13; Stanford CS224R policy-gradient lectures."
+  },
+  {
+    "id": 14,
+    "title": "Reinforcement learning for language models",
+    "module": "Modern applications",
+    "kind": "Lecture",
+    "summary": "Text generation as a decision process, preference feedback, verifiable rewards, and an introduction to RLHF and reasoning.",
+    "objectives": [
+      "Map language generation to states, actions, policies and rewards.",
+      "Distinguish preference-based feedback from verifiable outcome rewards.",
+      "Explain the role of reward models and regularization in post-training."
+    ],
+    "reading": "Stanford CS224R 2026, Lectures 9-10; Berkeley CS285 2026, Lecture 14."
+  },
+  {
+    "id": 15,
+    "title": "Lab 2: learning for sequential decisions",
+    "module": "Practice",
+    "kind": "Lab",
+    "summary": "Evaluate learned policies on a small dynamic decision problem; an LLM-related extension is an optional project direction.",
+    "objectives": [
+      "Choose suitable baselines and evaluation metrics.",
+      "Report results across multiple runs.",
+      "Analyze the limitations of a learned policy."
+    ],
+    "reading": "Review Lectures 8-14. Any confirmed lab instructions will appear on the Assignments page."
+  },
+  {
+    "id": 16,
+    "title": "Synthesis and project discussion",
+    "module": "Synthesis",
+    "kind": "Review",
+    "summary": "Connect modeling, planning, learning and approximation; discuss experiments and revisit the semester's core ideas.",
+    "objectives": [
+      "Select an appropriate method for a sequential decision problem.",
+      "Explain the assumptions and limitations of that method.",
+      "Connect dynamic programming to modern reinforcement learning."
+    ],
+    "reading": "Review lecture notes and any completed practice exercises. Scheduling depends on the verified makeup arrangement."
+  }
+]
