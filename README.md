@@ -21,10 +21,10 @@ Requires Node.js 18 or newer to regenerate. The generated website itself require
 ```sh
 npm run build
 npm run check
-python3 -m http.server 8765 --directory dist
+python3 preview.py
 ```
 
-Open `http://localhost:8765/`. Edit the two JSON files for structured content, `build.mjs` for page content/layout, and `dist/assets/style.css` for styling. Regenerate after source edits. Assets remain in place during regeneration.
+Open `http://127.0.0.1:8765/`. The preview disables caching so edited pages appear immediately. Edit the two JSON files for structured content, `build.mjs` for page content/layout, and `dist/assets/style.css` for styling. Regenerate after source edits. Assets remain in place during regeneration.
 
 ## GitHub Pages: dedicated course repository
 
