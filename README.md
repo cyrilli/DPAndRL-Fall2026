@@ -46,7 +46,7 @@ The builder checks required fields, dates, lecture references, and local links b
 
 The selected repository is [cyrilli/DPAndRL-Fall2026](https://github.com/cyrilli/DPAndRL-Fall2026). Commit and push the edited sources and rebuilt `dist/` to `main`. The supplied workflow installs dependencies, builds, checks, tests, and deploys `dist/` using GitHub's Pages actions.
 
-GitHub Pages must be enabled under **Settings → Pages → GitHub Actions**. The earlier setup attempt was blocked because the current GitHub plan does not support Pages for this private repository; preparing or pushing the site does not resolve that hosting requirement.
+The course website is published at [www.chuanhao-li.com/DPAndRL-Fall2026](https://www.chuanhao-li.com/DPAndRL-Fall2026/). GitHub Pages uses **GitHub Actions** under **Settings → Pages**. The repository is public, and successful pushes to `main` publish updates automatically. The standard `cyrilli.github.io/DPAndRL-Fall2026/` address redirects to the custom domain inherited from the personal website.
 
 All internal links are relative, so the generated site can live under a repository path or a subfolder of a personal website. To use an existing personal website, copy the contents of `dist/` into the chosen course subfolder and keep that website's existing deployment workflow.
 

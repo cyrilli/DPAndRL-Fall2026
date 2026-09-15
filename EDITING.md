@@ -39,7 +39,7 @@ npm run preview
 
 Run `npm ci` once after downloading the repository, and again when its dependencies change. Open [the local preview](http://127.0.0.1:8765/). The preview rebuilds when a page is requested: save your source file, then refresh the browser. If a build reports an error, correct the source before continuing. Stop the server with Ctrl+C.
 
-Before publishing, run `npm run build && npm run check` again. Commit and push the edited source files and rebuilt output to `main`. The GitHub workflow also runs `npm ci`, builds, checks and deploys the result; GitHub Pages must be enabled for the repository.
+Before publishing, run `npm run build && npm run check` again. Commit and push the edited source files and rebuilt output to `main`. The GitHub workflow also runs `npm ci`, builds, checks and deploys the result; Successful deployments publish to [the course website](https://www.chuanhao-li.com/DPAndRL-Fall2026/).
 
 ## Edit text and reusable values
 
