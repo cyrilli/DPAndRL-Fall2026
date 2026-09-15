@@ -81,7 +81,7 @@ DESCRIPTION:Teaching week 7. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
  -12:15 (China Standard Time). Based on the departmental timetable and p
  ublic university calendar. Any holiday teaching adjustment is pending v
  erification. No October 6 event is included. Proposed topic: Approximat
- e DP and information states.
+ e DP and online planning.
 END:VEVENT
 BEGIN:VEVENT
 UID:dp-rl-2026-20261103@course.chuanhao-li.com
@@ -106,8 +106,8 @@ LOCATION:Teaching Building 4\, Room 4401
 DESCRIPTION:Teaching week 9. Sections: 09:50-10:35\; 10:40-11:25\; 11:30
  -12:15 (China Standard Time). Based on the departmental timetable and p
  ublic university calendar. Any holiday teaching adjustment is pending v
- erification. No October 6 event is included. Proposed topic: Learning f
- rom interaction and bandits.
+ erification. No October 6 event is included. Proposed topic: Bandits\, 
+ exploration and regret.
 END:VEVENT
 BEGIN:VEVENT
 UID:dp-rl-2026-20261117@course.chuanhao-li.com
@@ -145,8 +145,8 @@ LOCATION:Teaching Building 4\, Room 4401
 DESCRIPTION:Teaching week 12. Sections: 09:50-10:35\; 10:40-11:25\; 11:3
  0-12:15 (China Standard Time). Based on the departmental timetable and 
  public university calendar. Any holiday teaching adjustment is pending 
- verification. No October 6 event is included. Proposed topic: Multi-ste
- p learning and planning with experience.
+ verification. No October 6 event is included. Proposed topic: Multi-age
+ nt reinforcement learning.
 END:VEVENT
 BEGIN:VEVENT
 UID:dp-rl-2026-20261208@course.chuanhao-li.com

@@ -15,7 +15,75 @@
   "adjustmentNoticeUrl": "https://xxbg.cic.tsinghua.edu.cn/oath/detail.jsp?boardid=2709&seq=177015",
   "noticeIndexUrl": "https://learning.tsinghua.edu.cn/xwgg/tzgg.htm",
   "instructors": [
-    {"name":"Chuanhao Li","title":"Assistant Professor","email":"chuanhao-li@mail.tsinghua.edu.cn","url":"https://www.chuanhao-li.com/","publications":"https://www.chuanhao-li.com/publications/","office":"Shunde Building, Room 402B","photo":"assets/chuanhao-li.png","bio":"Learning, decision-making and strategic interaction in multi-agent systems, including online collaborative learning and LLM-assisted decision-making."},
-    {"name":"Chengli Zhu","title":"Senior Engineer","email":"zhcl@tsinghua.edu.cn","url":"https://www.ie.tsinghua.edu.cn/info/1057/1094.htm"}
+    {
+      "name": "Chuanhao Li",
+      "title": "Assistant Professor",
+      "email": "chuanhao-li@tsinghua.edu.cn",
+      "url": "https://www.chuanhao-li.com/",
+      "publications": "https://www.chuanhao-li.com/publications/",
+      "office": "Shunde Building, Room 402B",
+      "photo": "assets/chuanhao-li.png",
+      "bio": "Learning, decision-making and strategic interaction in multi-agent systems, including online collaborative learning and LLM-assisted decision-making.",
+      "role": "Instructor"
+    },
+    {
+      "name": "Chengli Zhu",
+      "title": "Senior Engineer",
+      "email": "zhcl@tsinghua.edu.cn",
+      "url": "https://www.ie.tsinghua.edu.cn/info/1057/1094.htm",
+      "role": "Lab instructor",
+      "responsibility": "Leads the two lab sessions."
+    }
+  ],
+  "teachingAssistants": [
+    {
+      "name": "Zhengyu Ye",
+      "role": "Teaching assistant",
+      "title": "Second-year PhD student",
+      "department": "Department of Industrial Engineering",
+      "email": "zy-ye20@mails.tsinghua.edu.cn",
+      "responsibility": "Assignment questions and grading."
+    }
+  ],
+  "description": "This course covers the formulation and applications of sequential decision-making problems, dynamic programming for planning with known models, and reinforcement learning from interaction or historical data. Topics include Bellman equations, value and policy iteration, online planning and search, exploration and regret, function approximation, deep RL, policy gradients, and multi-agent learning. Applications range from inventory and logistics to robotics and language models.",
+  "prerequisites": [
+    {
+      "background": "Probability",
+      "use": "Conditional probability, expectation, and sampled estimates."
+    },
+    {
+      "background": "Linear algebra and calculus",
+      "use": "Value equations, approximation, and gradients."
+    },
+    {
+      "background": "Python programming",
+      "use": "Implementing DP and RL algorithms."
+    }
+  ],
+  "textbooks": [
+    {
+      "category": "Dynamic programming",
+      "title": "Dynamic Programming and Optimal Control, Volume I",
+      "authors": "Dimitri P. Bertsekas",
+      "description": "Modeling, the principle of optimality, and classical DP.",
+      "url": "https://www.mit.edu/~dimitrib/dpbook.html",
+      "linkLabel": "Author's book page"
+    },
+    {
+      "category": "Reinforcement learning",
+      "title": "Reinforcement Learning: An Introduction, 2nd edition",
+      "authors": "Richard S. Sutton and Andrew G. Barto",
+      "description": "Learning from experience, value functions, and policy optimization.",
+      "url": "https://mitpress.mit.edu/9780262352703/reinforcement-learning/",
+      "linkLabel": "Official book page"
+    },
+    {
+      "category": "Theory and exploration",
+      "title": "Reinforcement Learning: Theory and Algorithms",
+      "authors": "Alekh Agarwal, Kianté Brantley, Nan Jiang, Sham M. Kakade, and Wen Sun",
+      "description": "Bandits, exploration, and regret analysis.",
+      "url": "https://rltheorybook.github.io/",
+      "linkLabel": "Authors' website and free PDF"
+    }
   ]
 }

@@ -66,14 +66,14 @@
   },
   {
     "id": 6,
-    "title": "Approximate DP and information states",
+    "title": "Approximate DP and online planning",
     "module": "Dynamic programming",
     "kind": "Lecture",
-    "summary": "The limits of exact computation, rollout and approximate values, with an introduction to partial observations.",
+    "summary": "Approximate value functions, online search and rollout for problems where exact DP is too costly, followed by a brief introduction to partial observations.",
     "objectives": [
-      "Identify when a chosen state omits decision-relevant information.",
-      "Explain the purpose of belief or augmented states.",
-      "Describe how approximation and rollout extend exact planning."
+      "Explain how approximate values reduce the cost of planning.",
+      "Work through a short lookahead search and a rollout using a base policy.",
+      "Recognize when an augmented or belief state is needed under partial observations."
     ],
     "reading": "Selected MIT 6.231 lectures on imperfect information and approximate DP."
   },
@@ -92,16 +92,16 @@
   },
   {
     "id": 8,
-    "title": "Learning from interaction and bandits",
+    "title": "Bandits, exploration and regret",
     "module": "Reinforcement learning",
     "kind": "Lecture",
-    "summary": "The RL problem, sampled experience, and exploration versus exploitation in multi-armed bandits.",
+    "summary": "Learning from sampled experience, exploration versus exploitation, and regret in multi-armed bandits. Compare epsilon-greedy exploration, optimism and Thompson sampling.",
     "objectives": [
       "Distinguish planning with a model from learning through interaction.",
-      "Implement simple action-value estimates for a bandit.",
-      "Explain exploration and evaluate an exploration strategy."
+      "Estimate action values and calculate cumulative regret in a small bandit example.",
+      "Explain the intuition behind upper confidence bounds and Thompson sampling."
     ],
-    "reading": "Sutton and Barto, Chapters 1-2."
+    "reading": "Sutton and Barto, Chapters 1-2; Reinforcement Learning: Theory and Algorithms, selected material on bandits and exploration."
   },
   {
     "id": 9,
@@ -121,26 +121,28 @@
     "title": "Temporal-difference learning and control",
     "module": "Reinforcement learning",
     "kind": "Lecture",
-    "summary": "Bootstrapping, TD prediction, SARSA and Q-learning, using a common tabular environment.",
+    "summary": "Bootstrapping, TD prediction, SARSA and Q-learning in a common tabular environment, with a short comparison of one-step, n-step and Monte Carlo targets.",
     "objectives": [
       "Explain the TD error and bootstrapping.",
       "Implement SARSA and Q-learning.",
-      "Compare on-policy and off-policy control."
+      "Compare on-policy and off-policy control.",
+      "Relate n-step returns to the one-step TD and Monte Carlo targets."
     ],
-    "reading": "Sutton and Barto, Chapter 6."
+    "reading": "Sutton and Barto, Chapter 6; Chapter 7 for the optional n-step extension."
   },
   {
     "id": 11,
-    "title": "Multi-step learning and planning with experience",
+    "title": "Multi-agent reinforcement learning",
     "module": "Reinforcement learning",
     "kind": "Lecture",
-    "summary": "The relationship between Monte Carlo and TD, n-step returns, and combining planning with learned experience.",
+    "summary": "Cooperation and competition in games, equilibrium concepts, and a first look at learning in Markov games. Introduce centralized training with decentralized execution at a conceptual level.",
     "objectives": [
-      "Compute an n-step target.",
-      "Discuss bias, variance and update frequency.",
-      "Explain how a learned model can support planning."
+      "Distinguish cooperative, competitive and mixed-motive interactions.",
+      "Find best responses and an equilibrium in a small matrix game.",
+      "Explain why other learning agents make the environment nonstationary.",
+      "Distinguish centralized training from decentralized execution."
     ],
-    "reading": "Sutton and Barto, Chapters 7-8."
+    "reading": "Selected lecture notes on matrix games, Markov games and introductory multi-agent reinforcement learning; specific readings will be announced."
   },
   {
     "id": 12,
@@ -199,7 +201,7 @@
     "title": "Synthesis and project discussion",
     "module": "Synthesis",
     "kind": "Review",
-    "summary": "Connect modeling, planning, learning and approximation; discuss experiments and revisit the semester's core ideas.",
+    "summary": "Connect modeling, planning, learning and approximation; discuss experiments and revisit the semester's core ideas. Optional outlook topics include risk-aware decisions, offline RL and continual learning, as time permits.",
     "objectives": [
       "Select an appropriate method for a sequential decision problem.",
       "Explain the assumptions and limitations of that method.",

@@ -1,11 +1,11 @@
 # Dynamic Programming and Reinforcement Learning - Fall 2026
 
-An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. Home contains a brief course description, class details, updates and instructor links. Schedule is the single index for dates, topics and materials; individual lecture outlines remain linked from it. The old lectures.html address redirects to Schedule.
+An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. Home contains a brief course description, class details, updates, prerequisites and brief teaching-team contacts. Schedule is the single index for dates, topics and materials; individual lecture outlines remain linked from it. The old lectures.html address redirects to Schedule.
 
 ## Contents
 
 - `dist/`: the complete, ready-to-host static website.
-- `content/course.json`: course facts, instructors and calendar sources.
+- `content/course.json`: course facts, teaching team, prerequisites, core textbooks and calendar sources.
 - `content/lectures.json`: the proposed 16-session outline.
 - `build.mjs`: generates all pages and calendar downloads, without dependencies.
 - `check.mjs`: checks internal links, English page text, dates and repository-relative URLs.
@@ -46,7 +46,8 @@ The files also work at a deeper path such as `/teaching/dp-rl-2026/`. The select
 - The public university calendar places October 6 within the National Day holiday.
 - The downloadable calendar includes 15 regular Tuesday meetings; it does not invent a makeup date or final-exam date.
 - The separate holiday adjustment notice requires Tsinghua sign-in. See `CALENDAR_VERIFICATION.md`.
-- The 16-session teaching outline is a **proposal**, not an approved syllabus. The 16th session is unscheduled pending the makeup arrangement. Topic placement must be reviewed when that arrangement is known.
+- The teaching team, responsibilities, prerequisites and three core textbooks follow the instructor-supplied introductory slides. The contact email on those slides, `chuanhao-li@tsinghua.edu.cn`, takes precedence over the earlier website profile. Zhengyu Ye is the TA for assignment questions and grading; Chengli Zhu leads both labs.
+- The 16-session teaching outline is a **proposal**, not an approved syllabus. The 16th session is unscheduled pending the makeup arrangement. Topic placement must be reviewed when that arrangement is known. It includes online planning, exploration and regret, a regular multi-agent RL session, and the previously requested LLM session. Advanced extensions in the unscheduled synthesis are an optional outlook, not promised full lectures.
 - Grading, office hours, assignments and project requirements have not been invented. Their pages explicitly state that they are not yet released.
 - Only Lecture 1 currently includes a full study guide and worked example. Other lecture pages provide proposed objectives and readings; slide decks have not been created.
 
