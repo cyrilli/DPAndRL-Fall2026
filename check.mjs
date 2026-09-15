@@ -17,7 +17,8 @@ for(const file of files.filter(p=>p.endsWith('.html'))){
  for(const match of text.matchAll(/(?:href|src)="([^"]+)"/g)){
   const url=match[1];
   if(/^(https?:|mailto:|data:)/.test(url))continue;
-  const [pathname,hash]=url.split('#');
+  const [pathAndQuery,hash]=url.split('#');
+  const pathname=pathAndQuery.split('?')[0];
   const target=pathname?path.resolve(path.dirname(file),decodeURIComponent(pathname)):file;
   assert(target.startsWith(dist+path.sep),`Link outside site: ${url}`);
   assert(fs.existsSync(target),`Broken local link in ${file}: ${url}`);

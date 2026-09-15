@@ -1,6 +1,6 @@
 # Dynamic Programming and Reinforcement Learning - Fall 2026
 
-An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. Home contains a brief course description, class details, updates, prerequisites and brief teaching-team contacts. Schedule is the single index for dates, topics and materials; individual lecture outlines remain linked from it. The old lectures.html address redirects to Schedule.
+An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. Home contains a brief course description, class details, updates, prerequisites and brief teaching-team contacts. Schedule is the single index for dates, topics and materials, with the holiday shown in the table; individual lecture outlines remain linked from it. The old lectures.html address redirects to Schedule. Calendar evidence is kept in `CALENDAR_VERIFICATION.md`; the public pages omit administrative verification notes and calendar export controls.
 
 ## Contents
 
@@ -54,11 +54,11 @@ The files also work at a deeper path such as `/teaching/dp-rl-2026/`. The select
 ## Sources and attribution
 
 - Structure inspired by [Tsinghua RL 2025](https://coai.cs.tsinghua.edu.cn/Courses/RL2025/_site/index.html).
-- Visual restraint inspired by [Berkeley CS285](https://rail.eecs.berkeley.edu/deeprlcourse/).
+- Visual restraint inspired by [Berkeley CS285](https://rail.eecs.berkeley.edu/deeprlcourse/), with lighter typography, warm paper tones and muted purple accents.
 - Implementation is a small, independently authored static site. No Jekyll runtime or copied template is required.
 - Instructor information: [Chuanhao Li](https://www.chuanhao-li.com/), [official faculty profile](https://www.ie.tsinghua.edu.cn/info/1051/4043.htm), [Chengli Zhu](https://www.ie.tsinghua.edu.cn/info/1057/1094.htm).
 - Instructor portrait: the image used on [Chuanhao Li's homepage](https://cyrilli.github.io/images/portrait_photo.png).
-- Purple follows [Tsinghua's official color specification](https://vi.tsinghua.edu.cn/gk/xxbz/scgf.htm): `#660874`.
+- Muted purple accents reflect the course's Tsinghua affiliation within a warm, understated palette.
 - Reference-course slides are linked to their original publishers; the local teaching archive is not uploaded or redistributed by this site.
 
 The `.openai/` folder is local preview-registration metadata and is excluded from the GitHub package. This website is prepared for GitHub Pages; no Sites deployment is required.
