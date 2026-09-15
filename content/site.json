@@ -1,0 +1,94 @@
+{
+  "navigation": [
+    {
+      "id": "home",
+      "label": "Home",
+      "url": "index.html",
+      "source": "pages/home.md"
+    },
+    {
+      "id": "schedule",
+      "label": "Schedule",
+      "url": "schedule.html",
+      "source": "pages/schedule.md"
+    },
+    {
+      "id": "assignments",
+      "label": "Assignments",
+      "url": "assignments.html",
+      "source": "pages/assignments.md"
+    },
+    {
+      "id": "project",
+      "label": "Project",
+      "url": "project.html",
+      "source": "pages/project.md"
+    },
+    {
+      "id": "resources",
+      "label": "Resources",
+      "url": "resources.html",
+      "source": "pages/resources.md"
+    }
+  ],
+  "footer": {
+    "left": "{{course.title}}\n{{course.institution}} · {{course.department}}",
+    "right": "{{course.term}} · All times {{course.meeting.timezoneLabel}}"
+  },
+  "labels": {
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "office": "Office",
+    "datePending": "To be confirmed",
+    "materialsPending": "To be posted",
+    "holiday": "Holiday",
+    "pending": "Pending",
+    "scheduleCaption": "Course schedule; teaching topics are provisional",
+    "scheduleColumns": [
+      "Week",
+      "Date",
+      "Topic",
+      "Format",
+      "Materials"
+    ],
+    "prerequisiteColumns": [
+      "Background",
+      "Where it will be used"
+    ],
+    "referenceColumns": [
+      "Course",
+      "Best used for",
+      "Materials"
+    ],
+    "schedule": "Schedule",
+    "session": "Session",
+    "plannedDate": "Planned date",
+    "learningObjectives": "Learning objectives",
+    "beforeClass": "Before class",
+    "materials": "Materials",
+    "findResources": "Find textbooks and reference courses",
+    "slidesPending": "Course slides: not yet released.",
+    "previousOutline": "Previous outline",
+    "nextOutline": "Next outline",
+    "fullSchedule": "Full schedule",
+    "redirectTitle": "Schedule & materials",
+    "redirectMessage": "Lecture outlines and materials are now on the",
+    "redirectLink": "Schedule page",
+    "calendarName": "{{course.shortTitle}} - {{course.institution}} {{course.term}}",
+    "calendarColumns": [
+      "Teaching week",
+      "Date",
+      "Day",
+      "Start",
+      "End",
+      "Time zone",
+      "Room",
+      "Status",
+      "Topic"
+    ],
+    "regularMeeting": "Class",
+    "guideDate": "Date",
+    "guideTime": "Time",
+    "guideLocation": "Location"
+  }
+}

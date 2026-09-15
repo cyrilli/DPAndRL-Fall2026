@@ -1,0 +1,82 @@
+{
+  "textbooks": [
+    {
+      "category": "Dynamic programming",
+      "title": "Dynamic Programming and Optimal Control, Volume I",
+      "authors": "Dimitri P. Bertsekas",
+      "description": "Modeling, the principle of optimality, and classical DP.",
+      "url": "https://www.mit.edu/~dimitrib/dpbook.html",
+      "linkLabel": "Author's book page"
+    },
+    {
+      "category": "Reinforcement learning",
+      "title": "Reinforcement Learning: An Introduction, 2nd edition",
+      "authors": "Richard S. Sutton and Andrew G. Barto",
+      "description": "Learning from experience, value functions, and policy optimization.",
+      "url": "https://mitpress.mit.edu/9780262352703/reinforcement-learning/",
+      "linkLabel": "Official book page"
+    },
+    {
+      "category": "Theory and exploration",
+      "title": "Reinforcement Learning: Theory and Algorithms",
+      "authors": "Alekh Agarwal, Kianté Brantley, Nan Jiang, Sham M. Kakade, and Wen Sun",
+      "description": "Bandits, exploration, and regret analysis.",
+      "url": "https://rltheorybook.github.io/",
+      "linkLabel": "Authors' website and free PDF"
+    }
+  ],
+  "courses": [
+    {
+      "name": "MIT 6.231",
+      "title": "Dynamic Programming and Stochastic Control",
+      "description": "Classical DP, stochastic control and approximate DP.",
+      "url": "https://ocw.mit.edu/courses/6-231-dynamic-programming-and-stochastic-control-fall-2015/pages/lecture-notes/",
+      "linkLabel": "Lecture notes"
+    },
+    {
+      "name": "UCL / David Silver",
+      "title": "Reinforcement Learning",
+      "description": "A compact introduction to MDPs, DP, MC, TD and policy gradients.",
+      "url": "https://www.davidsilver.uk/teaching/",
+      "linkLabel": "Slides and videos"
+    },
+    {
+      "name": "Stanford CS234",
+      "title": "Reinforcement Learning, Winter 2026",
+      "description": "Core RL and selected modern extensions.",
+      "url": "https://web.stanford.edu/class/cs234/modules.html",
+      "linkLabel": "Lecture materials"
+    },
+    {
+      "name": "Berkeley CS185/285",
+      "title": "Deep Reinforcement Learning, Spring 2026",
+      "description": "Deep RL, offline learning and LLM applications.",
+      "url": "https://rail.eecs.berkeley.edu/deeprlcourse/",
+      "linkLabel": "Course materials"
+    },
+    {
+      "name": "Stanford CS224R",
+      "title": "Deep Reinforcement Learning, Spring 2026",
+      "description": "Policy optimization, imitation and RL for language models.",
+      "url": "https://cs224r.stanford.edu/",
+      "linkLabel": "Course materials"
+    }
+  ],
+  "llmReadings": [
+    {
+      "label": "Stanford CS224R: Preference Optimization",
+      "url": "https://cs224r.stanford.edu/slides/09_cs224r_rlhf_2026.pdf",
+      "description": "Reward learning and preference-based post-training."
+    },
+    {
+      "label": "Stanford CS224R: Reasoning",
+      "url": "https://cs224r.stanford.edu/slides/10_cs224r_rl_for_llms_reasoning_2026.pdf",
+      "description": "RL for reasoning and outcome feedback."
+    },
+    {
+      "label": "Berkeley CS285: LLM RL",
+      "url": "https://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-14.pdf",
+      "description": "Connecting sequence generation with reinforcement learning."
+    }
+  ]
+}

@@ -1,55 +1,60 @@
-# Dynamic Programming and Reinforcement Learning - Fall 2026
+# Dynamic Programming and Reinforcement Learning — Fall 2026
 
-An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University. Home contains a brief course description, class details, updates, prerequisites and brief teaching-team contacts. Schedule is the single index for dates, topics and materials, with the holiday shown in the table; individual lecture outlines remain linked from it. The old lectures.html address redirects to Schedule. Calendar evidence is kept in `CALENDAR_VERIFICATION.md`; the public pages omit administrative verification notes and calendar export controls.
+An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University.
 
-## Contents
+**Start with [EDITING.md](EDITING.md)** for a page-by-page map and examples of changing dates, uploading slides, posting assignments and updating contacts. Routine content edits do not require changing the generator.
 
-- `dist/`: the complete, ready-to-host static website.
-- `content/course.json`: course facts, teaching team, prerequisites, core textbooks and calendar sources.
-- `content/lectures.json`: the proposed 16-session outline.
-- `build.mjs`: generates all pages and calendar downloads, without dependencies.
-- `check.mjs`: checks internal links, English page text, dates and repository-relative URLs.
-- `.github/workflows/pages.yml`: deployment workflow for a dedicated course repository.
-- `CALENDAR_VERIFICATION.md`: source evidence and the unresolved makeup date.
+## Edit and preview
 
-All teaching pages and newly prepared study materials are in English. The official university calendar is linked and saved in its original Chinese form as a source document.
+Use Node.js 22 or newer and Python 3. From this repository's folder:
 
-## Preview and update
+```sh
+npm ci
+npm run preview
+```
 
-Requires Node.js 18 or newer to regenerate. The generated website itself requires no Node.js, Jekyll, database, account system or server application.
+Open [the local preview](http://127.0.0.1:8765/). Save an editable source file and refresh the browser; the preview rebuilds the site and disables caching. An invalid edit produces a source-specific error while preserving the last successful build. Stop the server with Ctrl+C. If the preview is already running, just refresh it.
+
+| Content you want to change | Editable source |
+| --- | --- |
+| Page text and sections | [`content/pages/`](content/pages/) — one Markdown file per page |
+| Course facts and teaching team | [`content/course.json`](content/course.json) |
+| Home updates | [`content/announcements.json`](content/announcements.json) |
+| Dates and holidays | [`content/schedule.json`](content/schedule.json) |
+| Lecture titles, objectives, readings and slide links | [`content/lectures.json`](content/lectures.json) |
+| Extended lecture notes | [`content/lectures/`](content/lectures/) |
+| Textbooks and reference links | [`content/resources.json`](content/resources.json) |
+| Navigation, footer and shared labels | [`content/site.json`](content/site.json) |
+| Styling and images | [`public/assets/`](public/assets/) |
+| Slides and handouts | [`public/downloads/`](public/downloads/) |
+
+**Do not edit `dist/`.** The entire folder is generated, including assets. Put source assets in `public/`; they are copied to the site root. Page sources use site-relative links such as `downloads/lecture-02.pdf`, including inside nested lecture notes.
+
+## Build and validate
 
 ```sh
 npm run build
 npm run check
-python3 preview.py
+npm test
 ```
 
-Open `http://127.0.0.1:8765/`. The preview disables caching so edited pages appear immediately. Edit the two JSON files for structured content, `build.mjs` for page content/layout, and `dist/assets/style.css` for styling. Regenerate after source edits. Assets remain in place during regeneration.
+The builder checks required fields, dates, lecture references, and local links before replacing the generated output. The checker also detects source edits that have not been rebuilt. Integration tests exercise common edits in temporary copies of the content.
 
-## GitHub Pages: dedicated course repository
+`build.mjs` handles rendering; `lib/content.mjs` handles validation; `templates/layout.html` is the shared HTML shell. Change these only when extending the site's behavior or layout. Markdown is rendered with the version of Marked recorded in `package-lock.json`.
 
-1. Put this project's files at the repository root, including `dist/` and `.github/`.
-2. In repository Settings > Pages, choose **GitHub Actions** as the source.
-3. Push to `main`, or run the workflow manually. Change the branch in the workflow if needed.
+## Publish on GitHub Pages
 
-The workflow uses GitHub's official Pages actions. All internal links are relative, so the same site works at a repository URL such as `https://USERNAME.github.io/REPOSITORY/` without changing its base URL.
+The selected repository is [cyrilli/DPAndRL-Fall2026](https://github.com/cyrilli/DPAndRL-Fall2026). Commit and push the edited sources and rebuilt `dist/` to `main`. The supplied workflow installs dependencies, builds, checks, tests, and deploys `dist/` using GitHub's Pages actions.
 
-## GitHub Pages: inside an existing personal website
+GitHub Pages must be enabled under **Settings → Pages → GitHub Actions**. The earlier setup attempt was blocked because the current GitHub plan does not support Pages for this private repository; preparing or pushing the site does not resolve that hosting requirement.
 
-Copy the **contents of `dist/`** into a chosen course subdirectory, preserving the internal directory structure. Keep the personal website's existing build and deployment workflow. Do not replace its root homepage, configuration, CNAME or publishing workflow with the dedicated-course workflow supplied here.
+All internal links are relative, so the generated site can live under a repository path or a subfolder of a personal website. To use an existing personal website, copy the contents of `dist/` into the chosen course subfolder and keep that website's existing deployment workflow.
 
-The files also work at a deeper path such as `/teaching/dp-rl-2026/`. The selected repository is https://github.com/cyrilli/DPAndRL-Fall2026. The dedicated-repository workflow above is configured for its main branch.
+## Course planning notes
 
-## What is confirmed and what remains a draft
+Schedule is the single index of dates, topics and materials. The old `lectures.html` address redirects there. Calendar evidence and the pending makeup arrangement are documented separately in [CALENDAR_VERIFICATION.md](CALENDAR_VERIFICATION.md). The public pages omit the administrative notes and calendar download controls.
 
-- The supplied timetable specifies Tuesdays, 09:50-12:15, Teaching Building 4, Room 4401, Weeks 1-16.
-- The public university calendar places October 6 within the National Day holiday.
-- The downloadable calendar includes 15 regular Tuesday meetings; it does not invent a makeup date or final-exam date.
-- The separate holiday adjustment notice requires Tsinghua sign-in. See `CALENDAR_VERIFICATION.md`.
-- The teaching team, responsibilities, prerequisites and three core textbooks follow the instructor-supplied introductory slides. The contact email on those slides, `chuanhao-li@tsinghua.edu.cn`, takes precedence over the earlier website profile. Zhengyu Ye is the TA for assignment questions and grading; Chengli Zhu leads both labs.
-- The 16-session teaching outline is a **proposal**, not an approved syllabus. The 16th session is unscheduled pending the makeup arrangement. Topic placement must be reviewed when that arrangement is known. It includes online planning, exploration and regret, a regular multi-agent RL session, and the previously requested LLM session. Advanced extensions in the unscheduled synthesis are an optional outlook, not promised full lectures.
-- Grading, office hours, assignments and project requirements have not been invented. Their pages explicitly state that they are not yet released.
-- Only Lecture 1 currently includes a full study guide and worked example. Other lecture pages provide proposed objectives and readings; slide decks have not been created.
+The current timetable has 15 regular meetings and one undated session. The lecture outline is tentative. Assignment, project and grading details remain unreleased, and only Lecture 1 currently has extended notes. Update these through the content files as plans and materials are finalized.
 
 ## Sources and attribution
 

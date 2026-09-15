@@ -10,7 +10,16 @@
       "Distinguish a policy from a fixed action sequence.",
       "Explain backward induction and the connection between DP and RL."
     ],
-    "reading": "Bertsekas, Dynamic Programming and Optimal Control, Volume I, Chapter 1; Sutton and Barto, Chapter 1."
+    "reading": "Bertsekas, Dynamic Programming and Optimal Control, Volume I, Chapter 1; Sutton and Barto, Chapter 1.",
+    "materials": [
+      {
+        "label": "Study guide",
+        "url": "downloads/lecture-01-study-guide.md",
+        "download": true
+      }
+    ],
+    "body": "lectures/01.md",
+    "download": "lecture-01-study-guide.md"
   },
   {
     "id": 2,
@@ -23,7 +32,8 @@
       "Recover an optimal policy from a value table.",
       "Compare enumeration with dynamic programming."
     ],
-    "reading": "Bertsekas, Volume I, Chapters 1-2."
+    "reading": "Bertsekas, Volume I, Chapters 1-2.",
+    "materials": []
   },
   {
     "id": 3,
@@ -36,7 +46,8 @@
       "Calculate an expected cost-to-go.",
       "Build and solve a small stochastic DP model."
     ],
-    "reading": "Bertsekas, Volume I, Chapter 3."
+    "reading": "Bertsekas, Volume I, Chapter 3.",
+    "materials": []
   },
   {
     "id": 4,
@@ -49,7 +60,8 @@
       "Formulate an infinite-horizon discounted MDP.",
       "Connect finite-horizon recursions to a fixed-point equation."
     ],
-    "reading": "Sutton and Barto, Chapter 3; MIT 6.231 infinite-horizon lectures."
+    "reading": "Sutton and Barto, Chapter 3; MIT 6.231 infinite-horizon lectures.",
+    "materials": []
   },
   {
     "id": 5,
@@ -62,7 +74,8 @@
       "Distinguish evaluation from control.",
       "Interpret stopping criteria and approximation error."
     ],
-    "reading": "Sutton and Barto, Chapter 4."
+    "reading": "Sutton and Barto, Chapter 4.",
+    "materials": []
   },
   {
     "id": 6,
@@ -75,7 +88,8 @@
       "Work through a short lookahead search and a rollout using a base policy.",
       "Recognize when an augmented or belief state is needed under partial observations."
     ],
-    "reading": "Selected MIT 6.231 lectures on imperfect information and approximate DP."
+    "reading": "Selected MIT 6.231 lectures on imperfect information and approximate DP.",
+    "materials": []
   },
   {
     "id": 7,
@@ -88,7 +102,8 @@
       "Implement and check a DP solution on a small instance.",
       "Explain feasibility, optimality and computational cost."
     ],
-    "reading": "Review Lectures 2, 3 and 6. Any confirmed lab instructions will appear on the Assignments page."
+    "reading": "Review Lectures 2, 3 and 6. Any confirmed lab instructions will appear on the Assignments page.",
+    "materials": []
   },
   {
     "id": 8,
@@ -101,7 +116,8 @@
       "Estimate action values and calculate cumulative regret in a small bandit example.",
       "Explain the intuition behind upper confidence bounds and Thompson sampling."
     ],
-    "reading": "Sutton and Barto, Chapters 1-2; Reinforcement Learning: Theory and Algorithms, selected material on bandits and exploration."
+    "reading": "Sutton and Barto, Chapters 1-2; Reinforcement Learning: Theory and Algorithms, selected material on bandits and exploration.",
+    "materials": []
   },
   {
     "id": 9,
@@ -114,7 +130,8 @@
       "Explain policy improvement using estimated action values.",
       "Describe the difference between behavior and target policies."
     ],
-    "reading": "Sutton and Barto, Chapter 5."
+    "reading": "Sutton and Barto, Chapter 5.",
+    "materials": []
   },
   {
     "id": 10,
@@ -128,7 +145,8 @@
       "Compare on-policy and off-policy control.",
       "Relate n-step returns to the one-step TD and Monte Carlo targets."
     ],
-    "reading": "Sutton and Barto, Chapter 6; Chapter 7 for the optional n-step extension."
+    "reading": "Sutton and Barto, Chapter 6; Chapter 7 for the optional n-step extension.",
+    "materials": []
   },
   {
     "id": 11,
@@ -142,7 +160,8 @@
       "Explain why other learning agents make the environment nonstationary.",
       "Distinguish centralized training from decentralized execution."
     ],
-    "reading": "Selected lecture notes on matrix games, Markov games and introductory multi-agent reinforcement learning; specific readings will be announced."
+    "reading": "Selected lecture notes on matrix games, Markov games and introductory multi-agent reinforcement learning; specific readings will be announced.",
+    "materials": []
   },
   {
     "id": 12,
@@ -155,7 +174,8 @@
       "Explain replay and target networks.",
       "Recognize instability risks when approximation and bootstrapping interact."
     ],
-    "reading": "Sutton and Barto, Chapters 9-11; selected Stanford CS234 materials."
+    "reading": "Sutton and Barto, Chapters 9-11; selected Stanford CS234 materials.",
+    "materials": []
   },
   {
     "id": 13,
@@ -168,7 +188,8 @@
       "Interpret a policy-gradient estimate and the role of a baseline.",
       "Distinguish the actor and critic in an actor-critic method."
     ],
-    "reading": "Sutton and Barto, Chapter 13; Stanford CS224R policy-gradient lectures."
+    "reading": "Sutton and Barto, Chapter 13; Stanford CS224R policy-gradient lectures.",
+    "materials": []
   },
   {
     "id": 14,
@@ -181,7 +202,8 @@
       "Distinguish preference-based feedback from verifiable outcome rewards.",
       "Explain the role of reward models and regularization in post-training."
     ],
-    "reading": "Stanford CS224R 2026, Lectures 9-10; Berkeley CS285 2026, Lecture 14."
+    "reading": "Stanford CS224R 2026, Lectures 9-10; Berkeley CS285 2026, Lecture 14.",
+    "materials": []
   },
   {
     "id": 15,
@@ -194,7 +216,8 @@
       "Report results across multiple runs.",
       "Analyze the limitations of a learned policy."
     ],
-    "reading": "Review Lectures 8-14. Any confirmed lab instructions will appear on the Assignments page."
+    "reading": "Review Lectures 8-14. Any confirmed lab instructions will appear on the Assignments page.",
+    "materials": []
   },
   {
     "id": 16,
@@ -207,6 +230,7 @@
       "Explain the assumptions and limitations of that method.",
       "Connect dynamic programming to modern reinforcement learning."
     ],
-    "reading": "Review lecture notes and any completed practice exercises. Scheduling depends on the verified makeup arrangement."
+    "reading": "Review lecture notes and any completed practice exercises. Scheduling depends on the verified makeup arrangement.",
+    "materials": []
   }
 ]

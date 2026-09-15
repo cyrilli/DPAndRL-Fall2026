@@ -1,3 +1,35 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Approximate DP and online planning. Dynamic Programming and Reinforcement Learning, Tsinghua University, Fall 2026."><meta name="theme-color" content="#fcfbf8"><title>Approximate DP and online planning | DP &amp; RL | Tsinghua Fall 2026</title><link rel="stylesheet" href="../assets/style.css?v=1894dfe255"></head>
-<body><a class="skip" href="#main">Skip to content</a><div class="topline"></div><header class="container"><div class="brand-row"><a class="brand" href="../index.html"><span class="wordmark">DP &amp; RL</span></a><span class="term">Fall 2026</span></div></header><nav aria-label="Main navigation"><div class="container nav-inner"><a href="../index.html">Home</a><a href="../schedule.html" aria-current="page">Schedule</a><a href="../assignments.html">Assignments</a><a href="../project.html">Project</a><a href="../resources.html">Resources</a></div></nav><main id="main" class="container"><div class="breadcrumb"><a href="../schedule.html">Schedule</a> / 06</div><section class="page-title"><p class="eyebrow">Lecture 06 / Dynamic programming</p><h1>Approximate DP and online planning</h1><p>Approximate value functions, online search and rollout for problems where exact DP is too costly, followed by a brief introduction to partial observations.</p></section><div class="meta"><span><strong>Planned date</strong> Oct 27, 2026</span></div><section class="section prose"><h2>Learning objectives</h2><ul><li>Explain how approximate values reduce the cost of planning.</li><li>Work through a short lookahead search and a rollout using a base policy.</li><li>Recognize when an augmented or belief state is needed under partial observations.</li></ul><h2>Before class</h2><p>Selected MIT 6.231 lectures on imperfect information and approximate DP.</p><div class="link-row"><a href="../resources.html">Find textbooks and reference courses</a></div><p class="note">Course slides: not yet released.</p></section><section class="section rule"><div class="section-head"><a href="05.html">&larr; Previous outline</a><a href="07.html">Next outline &rarr;</a></div></section></main><footer class="footer"><div class="container footer-inner"><p>Dynamic Programming and Reinforcement Learning<br>Tsinghua University &middot; Department of Industrial Engineering</p><p>Fall 2026 &middot; All times China Standard Time (UTC+8)</p></div></footer></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Approximate DP and online planning. Dynamic Programming and Reinforcement Learning, Tsinghua University, Fall 2026.">
+  <meta name="theme-color" content="#fcfbf8">
+  <title>Approximate DP and online planning | DP &amp; RL | Tsinghua University Fall 2026</title>
+  <link rel="stylesheet" href="../assets/style.css?v=1894dfe255">
+</head>
+<body>
+  <!-- Editable content: content/lectures.json. See EDITING.md in the repository. -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="container">
+    <div class="brand-row">
+      <a class="brand" href="../index.html"><span class="wordmark">DP &amp; RL</span></a>
+      <span class="term">Fall 2026</span>
+    </div>
+  </header>
+  <nav aria-label="Main navigation"><div class="container nav-inner"><a href="../index.html">Home</a>
+<a href="../schedule.html" aria-current="page">Schedule</a>
+<a href="../assignments.html">Assignments</a>
+<a href="../project.html">Project</a>
+<a href="../resources.html">Resources</a></div></nav>
+  <main id="main" class="container"><div class="breadcrumb"><a href="../schedule.html">Schedule</a> / 06</div>
+<section class="page-title"><p class="eyebrow">Session 06 / Dynamic programming</p><h1>Approximate DP and online planning</h1><p>Approximate value functions, online search and rollout for problems where exact DP is too costly, followed by a brief introduction to partial observations.</p></section>
+<div class="meta"><span><strong>Planned date</strong> Oct 27, 2026</span></div>
+<section class="section prose"><h2>Learning objectives</h2><ul><li>Explain how approximate values reduce the cost of planning.</li><li>Work through a short lookahead search and a rollout using a base policy.</li><li>Recognize when an augmented or belief state is needed under partial observations.</li></ul><h2>Before class</h2><p>Selected MIT 6.231 lectures on imperfect information and approximate DP.</p>
+<div class="link-row"><a href="../resources.html">Find textbooks and reference courses</a></div>
+<p class="note">Course slides: not yet released.</p></section>
+<section class="prose"></section>
+<section class="section rule"><div class="section-head"><a href="../lectures/05.html">&larr; Previous outline</a><a href="../lectures/07.html">Next outline &rarr;</a></div></section></main>
+  <footer class="footer"><div class="container footer-inner"><p>Dynamic Programming and Reinforcement Learning<br>Tsinghua University · Department of Industrial Engineering</p><p>Fall 2026 · All times China Standard Time (UTC+8)</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,89 @@
+[
+  {
+    "week": 1,
+    "date": "2026-09-15",
+    "lectureId": 1
+  },
+  {
+    "week": 2,
+    "date": "2026-09-22",
+    "lectureId": 2
+  },
+  {
+    "week": 3,
+    "date": "2026-09-29",
+    "lectureId": 3
+  },
+  {
+    "week": 4,
+    "date": "2026-10-06",
+    "kind": "holiday",
+    "title": "National Day holiday",
+    "note": "No class."
+  },
+  {
+    "week": 5,
+    "date": "2026-10-13",
+    "lectureId": 4
+  },
+  {
+    "week": 6,
+    "date": "2026-10-20",
+    "lectureId": 5
+  },
+  {
+    "week": 7,
+    "date": "2026-10-27",
+    "lectureId": 6
+  },
+  {
+    "week": 8,
+    "date": "2026-11-03",
+    "lectureId": 7
+  },
+  {
+    "week": 9,
+    "date": "2026-11-10",
+    "lectureId": 8
+  },
+  {
+    "week": 10,
+    "date": "2026-11-17",
+    "lectureId": 9
+  },
+  {
+    "week": 11,
+    "date": "2026-11-24",
+    "lectureId": 10
+  },
+  {
+    "week": 12,
+    "date": "2026-12-01",
+    "lectureId": 11
+  },
+  {
+    "week": 13,
+    "date": "2026-12-08",
+    "lectureId": 12
+  },
+  {
+    "week": 14,
+    "date": "2026-12-15",
+    "lectureId": 13
+  },
+  {
+    "week": 15,
+    "date": "2026-12-22",
+    "lectureId": 14
+  },
+  {
+    "week": 16,
+    "date": "2026-12-29",
+    "lectureId": 15
+  },
+  {
+    "week": null,
+    "date": null,
+    "lectureId": 16
+  }
+]

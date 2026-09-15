@@ -2,61 +2,171 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-const root=path.dirname(fileURLToPath(import.meta.url));
-const out=path.join(root,'dist');
-const cssVersion=createHash('sha256').update(fs.readFileSync(path.join(out,'assets/style.css'))).digest('hex').slice(0,10);
-const course=JSON.parse(fs.readFileSync(path.join(root,'content/course.json'),'utf8'));
-const lectures=JSON.parse(fs.readFileSync(path.join(root,'content/lectures.json'),'utf8'));
-const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const nav=[['Home','index.html'],['Schedule','schedule.html'],['Assignments','assignments.html'],['Project','project.html'],['Resources','resources.html']];
-const rows=Array.from({length:16},(_,i)=>{const d=new Date(Date.UTC(2026,8,15+7*i));return {week:i+1,date:d.toISOString().slice(0,10),holiday:i===3};});
-let n=0;for(const r of rows){if(!r.holiday)r.lecture=lectures[n++];}
-const dateLabel=iso=>new Date(iso+'T00:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
-const status=(text,cl='')=>`<span class="status ${cl}">${E(text)}</span>`;
-const page=(title,active,body,depth=0)=>{
- const base=depth?'../':'';
- return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${E(title)}. Dynamic Programming and Reinforcement Learning, Tsinghua University, Fall 2026."><meta name="theme-color" content="#fcfbf8"><title>${E(title)} | DP &amp; RL | Tsinghua Fall 2026</title><link rel="stylesheet" href="${base}assets/style.css?v=${cssVersion}"></head>
-<body><a class="skip" href="#main">Skip to content</a><div class="topline"></div><header class="container"><div class="brand-row"><a class="brand" href="${base}index.html"><span class="wordmark">DP &amp; RL</span></a><span class="term">Fall 2026</span></div></header><nav aria-label="Main navigation"><div class="container nav-inner">${nav.map(([name,url])=>`<a href="${base}${url}"${active===name?' aria-current="page"':''}>${name}</a>`).join('')}</div></nav><main id="main" class="container">${body}</main><footer class="footer"><div class="container footer-inner"><p>Dynamic Programming and Reinforcement Learning<br>Tsinghua University &middot; Department of Industrial Engineering</p><p>Fall 2026 &middot; All times China Standard Time (UTC+8)</p></div></footer></body></html>`;
-};
-const save=(name,html)=>{fs.mkdirSync(path.dirname(path.join(out,name)),{recursive:true});fs.writeFileSync(path.join(out,name),html);};
-const title=(heading,desc,tag='')=>`<section class="page-title">${tag?`<p class="eyebrow">${E(tag)}</p>`:''}<h1>${E(heading)}</h1><p>${desc}</p></section>`;
-const refs={mit:'https://ocw.mit.edu/courses/6-231-dynamic-programming-and-stochastic-control-fall-2015/pages/lecture-notes/',sutton:'https://mitpress.mit.edu/9780262352703/reinforcement-learning/',stanford:'https://web.stanford.edu/class/cs234/modules.html',cs224:'https://cs224r.stanford.edu/',berkeley:'https://rail.eecs.berkeley.edu/deeprlcourse/',silver:'https://www.davidsilver.uk/teaching/'};
-const ta=course.teachingAssistants[0];
-const labInstructor=course.instructors.find(p=>p.role==='Lab instructor');
-const staff=[...course.instructors,...course.teachingAssistants].map(p=>`<li><span class="staff-role">${E(p.role)}</span> ${p.url?`<a href="${E(p.url)}">${E(p.name)}</a>`:`<strong>${E(p.name)}</strong>`} <span class="staff-contact">&middot; <a href="mailto:${E(p.email)}">${E(p.email)}</a></span>${p.office||p.responsibility?`<span class="staff-note">${p.office?`Office: ${E(p.office)}.`:E(p.responsibility)}</span>`:''}</li>`).join('');
-save('index.html',page('Dynamic Programming and Reinforcement Learning','Home',`
-<section class="home-title"><h1>Dynamic Programming and Reinforcement Learning</h1></section>
-<section class="home-updates" aria-labelledby="updates-title"><h2 id="updates-title">Updates</h2><ul><li><time datetime="2026-09-15">Sep 15, 2026</time> &mdash; The <a href="schedule.html">schedule</a> and <a href="downloads/lecture-01-study-guide.md" download>Lecture 1 study guide</a> are available.</li><li><time datetime="2026-10-06">Oct 6, 2026</time> &mdash; National Day holiday. No class.</li></ul></section>
-<section class="home-section"><h2>Course description</h2><p>${E(course.description)}</p><dl class="home-details"><div><dt>Time</dt><dd>${E(course.time)}</dd></div><div><dt>Location</dt><dd>${E(course.room)}</dd></div><div><dt>Prerequisites</dt><dd>Probability, linear algebra and calculus, and Python programming. <a href="resources.html#preparation">Preparation and readings</a>.</dd></div></dl></section>
-<section class="home-section home-instructors"><h2>Teaching team</h2><ul>${staff}</ul></section>`));
+import {marked} from 'marked';
+import {loadContent, inside, listFiles, sourceHash, lecturePath, dateLabel, meetingFor, eventStamp, validateOutput, requireValue} from './lib/content.mjs';
 
-const scheduleRows=rows.map(r=>r.holiday?`<tr class="holiday"><td>04</td><td class="nowrap">Oct 6, 2026<small>Tuesday</small></td><td><strong>National Day holiday</strong><small>No class.</small></td><td>${status('Holiday','holiday')}</td><td>&mdash;</td></tr>`:`<tr id="lecture-${r.lecture.id}"><td>${String(r.week).padStart(2,'0')}</td><td class="nowrap">${dateLabel(r.date)}, 2026</td><td><a class="topic" href="lectures/${String(r.lecture.id).padStart(2,'0')}.html">${E(r.lecture.title)}</a><small>${E(r.lecture.module)}</small></td><td>${status(r.lecture.kind)}</td><td>${r.lecture.id===1?'<a href="downloads/lecture-01-study-guide.md" download>Study guide</a>':'<span class="label">To be posted</span>'}</td></tr>`).join('');
-save('schedule.html',page('Schedule','Schedule',title('Schedule & materials','Tuesdays, 09:50-12:15 &middot; Teaching Building 4, Room 4401.')+`
-<div class="table-wrap"><table class="schedule"><caption class="sr-only">Fall 2026 course schedule; teaching topics are provisional</caption><thead><tr><th scope="col">Week</th><th scope="col">Date</th><th scope="col">Topic</th><th scope="col">Format</th><th scope="col">Materials</th></tr></thead><tbody>${scheduleRows}<tr id="lecture-16"><td>&mdash;</td><td>To be confirmed</td><td><a class="topic" href="lectures/16.html">Synthesis and project discussion</a></td><td>${status('Pending','pending')}</td><td><span class="label">To be posted</span></td></tr></tbody></table></div>
-`));
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
+const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
+const inline = value => marked.parseInline(String(value ?? ''));
+const interpolate = (source, context, file) => source.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, key) => {
+  const value = key.split('.').reduce((current, part) => current?.[part], context);
+  requireValue(value !== undefined && value !== null, `${file}: unknown placeholder {{${key}}. See EDITING.md for supported placeholders.`);
+  requireValue(['string', 'number'].includes(typeof value), `${file}: {{${key}}} must refer to text, not an entire list or object.`);
+  return String(value);
+});
+const localUrl = (url, depth) => /^(?:[a-z][a-z\d+.-]*:|#|\?)/i.test(url) ? url : '../'.repeat(depth) + url;
+const rebase = (html, depth) => html.replace(/\b(href|src)=(["'])([^"']+)\2/g, (_, attribute, quote, url) => `${attribute}=${quote}${localUrl(url, depth)}${quote}`);
+const materialLinks = materials => materials.map(item => `<a href="${escape(item.url)}"${item.download ? ' download' : ''}>${escape(item.label)}</a>`).join(' &middot; ');
+const table = (columns, rows, attributes = '') => `<table${attributes}><thead><tr>${columns.map(label => `<th scope="col">${escape(label)}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`;
+const personLink = person => person.url ? `<a href="${escape(person.url)}">${escape(person.name)}</a>` : `<strong>${escape(person.name)}</strong>`;
 
-// Keep existing lecture-index bookmarks working without a second catalogue.
-save('lectures.html',`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>location.replace("schedule.html"+location.hash);</script><noscript><meta http-equiv="refresh" content="0;url=schedule.html"></noscript><title>Schedule &amp; materials | DP &amp; RL</title></head><body><p>Lecture outlines and materials are now on the <a href="schedule.html">Schedule page</a>.</p></body></html>`);
+function calendarFiles(data) {
+  const {course, site, lectures, schedule} = data;
+  const byId = new Map(lectures.map(lecture => [lecture.id, lecture]));
+  const icsEscape = value => String(value).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+  const context = {course};
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//DP RL Course Website//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    `X-WR-CALNAME:${icsEscape(interpolate(site.labels.calendarName, context, 'content/site.json → labels.calendarName'))}`, `X-WR-TIMEZONE:${course.meeting.timezone}`];
+  for (const row of schedule.filter(row => row.kind !== 'holiday' && row.date !== null)) {
+    const meeting = meetingFor(course, row);
+    const lecture = byId.get(row.lectureId);
+    lines.push('BEGIN:VEVENT', `UID:course-session-${lecture.id}-${course.term.replace(/[^\w-]/g, '-')}@course.local`,
+      `DTSTAMP:${row.date.replaceAll('-', '')}T000000Z`,
+      `DTSTART:${eventStamp(row.date, meeting.start, course.meeting.utcOffset)}`,
+      `DTEND:${eventStamp(row.date, meeting.end, course.meeting.utcOffset)}`,
+      `SUMMARY:${icsEscape(course.title)}`, `LOCATION:${icsEscape(meeting.room)}`,
+      `DESCRIPTION:${icsEscape(lecture.title + (row.note ? '\n' + row.note : ''))}`, 'END:VEVENT');
+  }
+  lines.push('END:VCALENDAR');
+  const folded = lines.map(line => {
+    const parts = [];
+    let current = '';
+    for (const char of line) {
+      if (Buffer.byteLength(current + char) > 73) { parts.push(current); current = ' '; }
+      current += char;
+    }
+    parts.push(current);
+    return parts.join('\r\n');
+  });
+  const quote = value => '"' + String(value ?? '').replaceAll('"', '""') + '"';
+  const csvRows = schedule.map(row => {
+    const holiday = row.kind === 'holiday';
+    const meeting = meetingFor(course, row);
+    const day = row.date ? new Date(`${row.date}T12:00:00Z`).toLocaleDateString('en-US', {weekday: 'long', timeZone: 'UTC'}) : '';
+    return [row.week, row.date, day, holiday || !row.date ? '' : meeting.start, holiday || !row.date ? '' : meeting.end,
+      course.meeting.timezone, holiday ? '' : meeting.room, holiday ? site.labels.holiday : row.date ? site.labels.regularMeeting : site.labels.pending,
+      holiday ? row.title : byId.get(row.lectureId).title];
+  });
+  return new Map([
+    ['downloads/course-calendar.ics', folded.join('\r\n') + '\r\n'],
+    ['downloads/course-schedule.csv', [site.labels.calendarColumns, ...csvRows].map(row => row.map(quote).join(',')).join('\r\n') + '\r\n']
+  ]);
+}
 
-const firstLecture=`<section class="prose"><h2>Three sections, one running example</h2><div class="table-wrap"><table><thead><tr><th scope="col">Time</th><th scope="col">Focus</th><th scope="col">Activity</th></tr></thead><tbody><tr><td class="nowrap">09:50-10:35</td><td>Why sequential decisions?</td><td>Course introduction, delayed consequences, and a small route-planning challenge.</td></tr><tr><td class="nowrap">10:40-11:25</td><td>Model the problem</td><td>Identify states, actions, transitions, costs, policies and the horizon. Try a short inventory modeling exercise.</td></tr><tr><td class="nowrap">11:30-12:15</td><td>Reason backward</td><td>Compute remaining costs, express Bellman's idea, and connect planning to RL and language models.</td></tr></tbody></table></div><h2>A route-planning example</h2><p>Find the lowest-cost route from A to G. Each edge cost is known, and every move goes to the next layer.</p>
-<svg class="route-graph" role="img" aria-labelledby="graph-title graph-desc" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><title id="graph-title">A three-stage route-planning network</title><desc id="graph-desc">A connects to B with cost 2 and C with cost 5. B connects to D with cost 4 and E with cost 7. C connects to D with cost 2 and E with cost 1. D connects to G with cost 4. E connects to G with cost 2. The best route is A, C, E, G.</desc><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#9d96a2"/></marker><marker id="bestarrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#660874"/></marker></defs><g fill="none" stroke="#bcb6c0" stroke-width="2" marker-end="url(#arrow)"><path d="M100 122 L225 65"/><path d="M275 55 L475 55"/><path d="M271 66 L479 194"/><path d="M271 194 L479 66"/><path d="M525 65 L651 122"/></g><g fill="none" stroke="#660874" stroke-width="3" marker-end="url(#bestarrow)"><path d="M100 140 L225 198"/><path d="M275 205 L475 205"/><path d="M525 198 L651 140"/></g><g font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#57505d" paint-order="stroke" stroke="white" stroke-width="6"><text x="153" y="81">2</text><text x="155" y="191">5</text><text x="375" y="43">4</text><text x="328" y="120">7</text><text x="421" y="120">2</text><text x="375" y="235">1</text><text x="598" y="81">4</text><text x="598" y="191">2</text></g><g fill="white" stroke="#660874" stroke-width="2"><circle cx="75" cy="130" r="25"/><circle cx="250" cy="55" r="25"/><circle cx="250" cy="205" r="25"/><circle cx="500" cy="55" r="25"/><circle cx="500" cy="205" r="25"/><circle cx="676" cy="130" r="25"/></g><g font-family="Arial,sans-serif" font-size="21" text-anchor="middle" fill="#660874"><text x="75" y="137">A</text><text x="250" y="62">B</text><text x="250" y="212">C</text><text x="500" y="62">D</text><text x="500" y="212">E</text><text x="676" y="137">G</text></g></svg>
-<p>The cheapest immediate move produces A &rarr; B &rarr; D &rarr; G, with total cost <strong>10</strong>. Backward induction finds A &rarr; C &rarr; E &rarr; G, with total cost <strong>8</strong>.</p><details class="worked-solution"><summary>Work through the backward calculation</summary><ol><li>At the destination: J(G) = 0.</li><li>One move remaining: J(D) = 4 and J(E) = 2.</li><li>J(B) = min(4 + 4, 7 + 2) = 8.</li><li>J(C) = min(2 + 4, 1 + 2) = 3.</li><li>J(A) = min(2 + 8, 5 + 3) = 8.</li></ol><p>A policy also specifies what to do from B, even though the optimal route from A visits C.</p></details><blockquote>Choose the action with the smallest immediate cost plus optimal remaining cost.</blockquote><h2>Connecting the ideas to language models</h2><ul><li><strong>State:</strong> the prompt and the generated prefix.</li><li><strong>Action:</strong> the next token.</li><li><strong>Policy:</strong> the language model's distribution over tokens.</li><li><strong>Reward:</strong> feedback on the completed answer, such as a preference score or a code-test result.</li></ul><p>Appending a token is a known transition. RL is useful here because the space of possible prefixes is enormous and optimizing sequence-level rewards relies on sampled experience and approximation.</p><h2>Check your understanding</h2><ol><li>What is the difference between a policy and a route?</li><li>Why can a locally cheap action be globally expensive?</li><li>If the cost from E to G changes from 2 to 6, which decisions change?</li><li>What changes when travel costs must be learned from experience?</li></ol></section>`;
-for(const l of lectures){const r=rows.find(r=>r.lecture?.id===l.id);const detail=`<div class="breadcrumb"><a href="../schedule.html">Schedule</a> / ${String(l.id).padStart(2,'0')}</div>${title(l.title,E(l.summary),`${l.kind==='Lab'?'Session':l.kind} ${String(l.id).padStart(2,'0')} / ${l.kind==='Lab'?'Lab':l.module}`)}<div class="meta"><span><strong>Planned date</strong> ${r?dateLabel(r.date)+', 2026':'To be announced'}</span></div><section class="section prose"><h2>Learning objectives</h2><ul>${l.objectives.map(x=>`<li>${E(x)}</li>`).join('')}</ul><h2>Before class</h2><p>${E(l.reading)}</p><div class="link-row"><a href="../resources.html">Find textbooks and reference courses</a>${l.id===1?'<a href="../downloads/lecture-01-study-guide.md" download>Download study guide</a>':''}</div><p class="note">Course slides: not yet released.</p></section>${l.id===1?firstLecture:''}<section class="section rule"><div class="section-head">${l.id>1?`<a href="${String(l.id-1).padStart(2,'0')}.html">&larr; Previous outline</a>`:'<a href="../schedule.html">Semester schedule</a>'}${l.id<16?`<a href="${String(l.id+1).padStart(2,'0')}.html">Next outline &rarr;</a>`:'<a href="../schedule.html">Full schedule</a>'}</div></section>`;save(`lectures/${String(l.id).padStart(2,'0')}.html`,page(l.title,'Schedule',detail,1));}
+export function buildSite(root = ROOT) {
+  const data = loadContent(root);
+  const {course, site, lectures, schedule, announcements, resources} = data;
+  const labels = site.labels;
+  const team = [...course.instructors, ...course.teachingAssistants];
+  const byId = new Map(lectures.map(lecture => [lecture.id, lecture]));
+  const schedulePage = site.navigation.find(page => page.id === 'schedule');
+  const resourcesPage = site.navigation.find(page => page.id === 'resources');
+  const homePage = site.navigation.find(page => page.id === 'home') ?? site.navigation[0];
+  const fullCourse = {...course, meetingLabel: `${course.meeting.weekdayLabel}, ${course.meeting.start}-${course.meeting.end}`,
+    prerequisitesSummary: course.prerequisites.map(item => item.background).join(', ') + '.'};
+  const contacts = {};
+  for (const key of ['assignmentHelp', 'labs', ...Object.keys(course.contacts ?? {})]) {
+    const person = team.find(item => item.id === course.contacts?.[key]);
+    contacts[key] = person ? `${personLink(person)} &middot; <a href="mailto:${escape(person.email)}">${escape(person.email)}</a>` : escape(labels.datePending);
+    contacts[key + 'Name'] = person ? escape(person.name) : escape(labels.datePending);
+  }
+  const context = {course: fullCourse, site, contacts};
+  context.team = `<ul>${team.map(person => `<li><span class="staff-role">${escape(person.role)}</span> ${personLink(person)} <span class="staff-contact">&middot; <a href="mailto:${escape(person.email)}">${escape(person.email)}</a></span>${person.office ? `<span class="staff-note">${escape(labels.office)}: ${escape(person.office)}.</span>` : ''}${person.responsibility ? `<span class="staff-note">${escape(person.responsibility)}</span>` : ''}</li>`).join('\n')}</ul>`;
+  context.announcements = `<ul>${announcements.map(item => `<li><time datetime="${item.date}">${dateLabel(item.date)}</time> &mdash; ${inline(item.text)}</li>`).join('\n')}</ul>`;
+  context.textbooks = `<div class="three-col">${resources.textbooks.map(book => `<article class="module"><p class="module-number">${escape(book.category.toUpperCase())}</p><h3>${escape(book.title)}</h3><p>${escape(book.authors)}</p><p>${inline(book.description)}</p><a href="${escape(book.url)}">${escape(book.linkLabel)} &rarr;</a></article>`).join('\n')}</div>`;
+  context.prerequisites = table(labels.prerequisiteColumns, course.prerequisites.map(item => `<tr><th scope="row">${escape(item.background)}</th><td>${inline(item.use)}</td></tr>`).join('\n'));
+  context.referenceCourses = table(labels.referenceColumns, resources.courses.map(item => `<tr><td><strong>${escape(item.name)}</strong><small>${escape(item.title)}</small></td><td>${inline(item.description)}</td><td><a href="${escape(item.url)}">${escape(item.linkLabel)}</a></td></tr>`).join('\n'));
+  context.llmReadings = `<ul>${resources.llmReadings.map(item => `<li><a href="${escape(item.url)}">${escape(item.label)}</a> &mdash; ${inline(item.description)}</li>`).join('\n')}</ul>`;
+  context.schedule = table(labels.scheduleColumns, schedule.map(row => {
+    const holiday = row.kind === 'holiday';
+    const lecture = byId.get(row.lectureId);
+    const meeting = meetingFor(course, row);
+    const override = !holiday && (row.start || row.end || row.room) ? `<small>${escape(meeting.start)}-${escape(meeting.end)} &middot; ${escape(meeting.room)}</small>` : '';
+    const topic = holiday ? `<strong>${escape(row.title)}</strong>` : `<a class="topic" href="${lecturePath(lecture.id)}">${escape(lecture.title)}</a><small>${escape(lecture.module)}</small>`;
+    return `<tr${holiday ? ' class="holiday"' : ` id="lecture-${lecture.id}"`}><td>${row.week === null ? '&mdash;' : String(row.week).padStart(2, '0')}</td><td class="nowrap">${row.date ? dateLabel(row.date) : escape(labels.datePending)}${override}</td><td>${topic}${row.note ? `<small>${inline(row.note)}</small>` : ''}</td><td><span class="status">${escape(holiday ? labels.holiday : row.date === null ? labels.pending : lecture.kind)}</span></td><td>${holiday ? '&mdash;' : lecture.materials.length ? materialLinks(lecture.materials) : `<span class="label">${escape(labels.materialsPending)}</span>`}</td></tr>`;
+  }).join('\n'), ' class="schedule"').replace('<thead>', `<caption class="sr-only">${escape(labels.scheduleCaption)}</caption><thead>`);
 
-save('assignments.html',page('Assignments','Assignments',title('Assignments','Written exercises and computational work will connect the mathematical ideas to concrete decision problems.')+`<div class="empty-state"><h2>Assignment releases</h2><p>No assignments have been released for Fall 2026. Any confirmed assignments, instructions and deadlines will appear here.</p></div><section class="section two-col"><div><h2>Assignment questions</h2><p>Contact ${E(ta.name)}, teaching assistant, at <a href="mailto:${E(ta.email)}">${E(ta.email)}</a> for assignment-related questions and grading.</p><h2>Written exercises</h2><p>The proposed exercises will cover modeling, Bellman recursions, policy evaluation and the analysis of learning algorithms.</p><p class="note">Release dates, grading weights and collaboration rules: to be announced.</p></div><div><h2>Computational practice</h2><p>The course includes two lab sessions led by ${E(labInstructor.name)}. The proposed topics are resource-constrained planning and learning for sequential decisions.</p><a href="project.html">View proposed lab directions &rarr;</a></div></section><section class="section rule prose"><h2>Preparing for the first class</h2><p>Read the <a href="lectures/01.html">first lecture overview</a> and try the route-planning problem. This is a preparation activity, not a graded assignment.</p><p>For programming preparation, review Python arrays, functions and basic numerical computation. The <a href="https://cs231n.github.io/python-numpy-tutorial/">Stanford Python and NumPy tutorial</a> is a useful reference.</p></section>`));
-save('project.html',page('Labs and project','Project',title('Labs and project','The course includes two lab sessions led by '+E(labInstructor.name)+'. The directions below are tentative; handouts and assessment rules will be announced.')+`<p>Lab instructor: <a href="${E(labInstructor.url)}">${E(labInstructor.name)}</a> &middot; <a href="mailto:${E(labInstructor.email)}">${E(labInstructor.email)}</a></p><section class="section two-col"><article class="module"><p class="module-number">LAB 01 / PLANNING</p><h2>Resource-constrained paths</h2><p>Find a route while respecting a limited resource such as energy or time. Use the state to track that resource and compare the resulting policy with an unconstrained shortest path.</p><a href="lectures/07.html">Learning objectives &rarr;</a></article><article class="module"><p class="module-number">LAB 02 / LEARNING</p><h2>Learning for sequential decisions</h2><p>Train and evaluate a policy on a small dynamic decision problem. Compare against a simple baseline and examine performance across repeated runs.</p><a href="lectures/15.html">Learning objectives &rarr;</a></article></section><section class="section rule prose"><h2>Optional direction: RL for language models</h2><p>A small language-model experiment could examine preference feedback or verifiable rewards. This is a possible extension, not a required assignment. Its feasibility will depend on the available computing resources and the final project brief.</p><p>Examples from <a href="https://cs224r.stanford.edu/">Stanford CS224R</a> and <a href="https://rail.eecs.berkeley.edu/deeprlcourse/">Berkeley CS285</a> provide context for how other courses organize this work.</p><div class="notice"><strong>Requirements to be announced:</strong> team size, computing resources, deliverables, grading, and submission dates.</div></section>`));
-save('resources.html',page('Resources','Resources',title('Reading and study resources','Core texts, preparation, and reference courses for dynamic programming and reinforcement learning.')+`<section class="section"><h2>Core reading</h2><div class="three-col">${course.textbooks.map(book=>`<article class="module"><p class="module-number">${E(book.category.toUpperCase())}</p><h3>${E(book.title)}</h3><p>${E(book.authors)}</p><p>${E(book.description)}</p><a href="${E(book.url)}">${E(book.linkLabel)} &rarr;</a></article>`).join('')}</div></section><section id="preparation" class="section rule"><h2>Background and preparation</h2><div class="table-wrap"><table><thead><tr><th scope="col">Background</th><th scope="col">Where it will be used</th></tr></thead><tbody>${course.prerequisites.map(item=>`<tr><th scope="row">${E(item.background)}</th><td>${E(item.use)}</td></tr>`).join('')}</tbody></table></div><p class="note">For a Python refresher, see the <a href="https://cs231n.github.io/python-numpy-tutorial/">Stanford Python and NumPy tutorial</a>.</p></section><section class="section rule"><h2>Reference courses</h2><div class="table-wrap"><table><thead><tr><th scope="col">Course</th><th scope="col">Best used for</th><th scope="col">Materials</th></tr></thead><tbody><tr><td><strong>MIT 6.231</strong><small>Dynamic Programming and Stochastic Control</small></td><td>Classical DP, stochastic control and approximate DP.</td><td><a href="${refs.mit}">Lecture notes</a></td></tr><tr><td><strong>UCL / David Silver</strong><small>Reinforcement Learning</small></td><td>A compact introduction to MDPs, DP, MC, TD and policy gradients.</td><td><a href="${refs.silver}">Slides and videos</a></td></tr><tr><td><strong>Stanford CS234</strong><small>Reinforcement Learning, Winter 2026</small></td><td>Core RL and selected modern extensions.</td><td><a href="${refs.stanford}">Lecture materials</a></td></tr><tr><td><strong>Berkeley CS185/285</strong><small>Deep Reinforcement Learning, Spring 2026</small></td><td>Deep RL, offline learning and LLM applications.</td><td><a href="${refs.berkeley}">Course materials</a></td></tr><tr><td><strong>Stanford CS224R</strong><small>Deep Reinforcement Learning, Spring 2026</small></td><td>Policy optimization, imitation and RL for language models.</td><td><a href="${refs.cs224}">Course materials</a></td></tr></tbody></table></div></section><section class="section rule prose"><h2>RL for language models</h2><ul><li><a href="https://cs224r.stanford.edu/slides/09_cs224r_rlhf_2026.pdf">Stanford CS224R: Preference Optimization</a> &mdash; reward learning and preference-based post-training.</li><li><a href="https://cs224r.stanford.edu/slides/10_cs224r_rl_for_llms_reasoning_2026.pdf">Stanford CS224R: Reasoning</a> &mdash; RL for reasoning and outcome feedback.</li><li><a href="https://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-14.pdf">Berkeley CS285: LLM RL</a> &mdash; connecting sequence generation with reinforcement learning.</li></ul><p class="note">External materials remain attributed to their original authors and are linked from their official sources.</p></section>`));
+  const files = new Map();
+  for (const file of listFiles(path.join(root, 'public'))) files.set(path.relative(path.join(root, 'public'), file).split(path.sep).join('/'), fs.readFileSync(file));
+  requireValue(files.has('assets/style.css'), 'Missing public/assets/style.css. Source assets belong in public/, not dist/.');
+  const cssVersion = createHash('sha256').update(files.get('assets/style.css')).digest('hex').slice(0, 10);
+  const layout = fs.readFileSync(path.join(root, 'templates/layout.html'), 'utf8');
+  const renderMarkdown = (source, file, extra = {}) => {
+    const expanded = interpolate(source, {...context, ...extra}, file);
+    return marked.parse(expanded).replace(/(<table\b[\s\S]*?<\/table>)/g, '<div class="table-wrap">$1</div>');
+  };
+  const wrap = (body, title, active, output, sourceNote) => {
+    const depth = output.split('/').length - 1;
+    const footer = key => inline(interpolate(site.footer[key], context, `content/site.json → footer.${key}`)).replace(/\n/g, '<br>');
+    return interpolate(layout, {
+      metaDescription: escape(`${title}. ${course.title}, ${course.institution}, ${course.term}.`),
+      documentTitle: escape(`${title} | ${course.shortTitle} | ${course.institution} ${course.term}`),
+      cssUrl: localUrl(`assets/style.css?v=${cssVersion}`, depth),
+      sourceNote: escape(sourceNote), skipToContent: escape(labels.skipToContent),
+      homeUrl: localUrl(homePage.url, depth), brand: escape(course.shortTitle), term: escape(course.term),
+      mainNavigation: escape(labels.mainNavigation),
+      navigation: site.navigation.map(page => `<a href="${localUrl(page.url, depth)}"${page.id === active ? ' aria-current="page"' : ''}>${escape(page.label)}</a>`).join('\n'),
+      body: rebase(body, depth), footerLeft: rebase(footer('left'), depth), footerRight: rebase(footer('right'), depth)
+    }, 'templates/layout.html');
+  };
+  for (const page of site.navigation) {
+    const source = fs.readFileSync(inside(path.join(root, 'content'), page.source), 'utf8');
+    const body = renderMarkdown(source, `content/${page.source}`);
+    const titleMatch = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    requireValue(titleMatch, `content/${page.source}: add a # page title.`);
+    const title = titleMatch[1].replace(/<[^>]+>/g, '').replaceAll('&amp;', '&');
+    files.set(page.url, wrap(body, title, page.id, page.url, `content/${page.source}`));
+  }
+  for (const [index, lecture] of lectures.entries()) {
+    const row = schedule.find(row => row.lectureId === lecture.id);
+    const meeting = meetingFor(course, row ?? {});
+    const date = row?.date ? dateLabel(row.date) : labels.datePending;
+    const lectureContext = {lecture: {...lecture, date, start: meeting.start, end: meeting.end, room: meeting.room}};
+    const source = lecture.body ? fs.readFileSync(inside(path.join(root, 'content'), lecture.body), 'utf8') : '';
+    const body = `<div class="breadcrumb"><a href="${schedulePage.url}">${escape(labels.schedule)}</a> / ${String(lecture.id).padStart(2, '0')}</div>
+<section class="page-title"><p class="eyebrow">${escape(labels.session)} ${String(lecture.id).padStart(2, '0')} / ${escape(lecture.module)}</p><h1>${escape(lecture.title)}</h1><p>${inline(lecture.summary)}</p></section>
+<div class="meta"><span><strong>${escape(labels.plannedDate)}</strong> ${escape(date)}${row?.start || row?.end || row?.room ? ` &middot; ${escape(meeting.start)}-${escape(meeting.end)} &middot; ${escape(meeting.room)}` : ''}</span></div>
+<section class="section prose"><h2>${escape(labels.learningObjectives)}</h2><ul>${lecture.objectives.map(item => `<li>${inline(item)}</li>`).join('')}</ul><h2>${escape(labels.beforeClass)}</h2><p>${inline(lecture.reading)}</p>
+${resourcesPage ? `<div class="link-row"><a href="${resourcesPage.url}">${escape(labels.findResources)}</a></div>` : ''}
+${lecture.materials.length ? `<h2>${escape(labels.materials)}</h2><div class="link-row">${materialLinks(lecture.materials)}</div>` : `<p class="note">${escape(labels.slidesPending)}</p>`}</section>
+<section class="prose">${renderMarkdown(source, `content/${lecture.body ?? 'lectures.json'}`, lectureContext)}</section>
+<section class="section rule"><div class="section-head">${index > 0 ? `<a href="${lecturePath(lectures[index - 1].id)}">&larr; ${escape(labels.previousOutline)}</a>` : `<a href="${schedulePage.url}">${escape(labels.fullSchedule)}</a>`}${index + 1 < lectures.length ? `<a href="${lecturePath(lectures[index + 1].id)}">${escape(labels.nextOutline)} &rarr;</a>` : `<a href="${schedulePage.url}">${escape(labels.fullSchedule)}</a>`}</div></section>`;
+    files.set(lecturePath(lecture.id), wrap(body, lecture.title, 'schedule', lecturePath(lecture.id), `content/lectures.json${lecture.body ? ` and content/${lecture.body}` : ''}`));
+    if (lecture.download) {
+      const guide = `# ${lecture.title}\n\n${course.title}\n${course.institution}, ${course.term}\n\n${labels.guideDate}: ${date}. ${labels.guideTime}: ${meeting.start}-${meeting.end}, ${course.meeting.timezoneLabel}.\n${labels.guideLocation}: ${meeting.room}.\n\n## ${labels.learningObjectives}\n\n${lecture.objectives.map(item => '- ' + item).join('\n')}\n\n${interpolate(source, {...context, ...lectureContext}, `content/${lecture.body}`)}\n\n## ${labels.beforeClass}\n\n${lecture.reading}\n`;
+      files.set(`downloads/${lecture.download}`, rebase(guide, 1).replace(/(!?\[[^\]]*\]\()([^\s)]+)(\))/g, (_, before, url, after) => before + localUrl(url, 1) + after));
+    }
+  }
+  // Keep existing bookmarks without maintaining a duplicate lecture catalogue.
+  const redirect = `<script>location.replace(${JSON.stringify(schedulePage.url)}+location.hash);</script><noscript><meta http-equiv="refresh" content="0;url=${escape(schedulePage.url)}"></noscript>`;
+  files.set('lectures.html', `<!doctype html><html lang="en"><head><meta charset="utf-8">${redirect}<title>${escape(labels.redirectTitle)}</title></head><body><p>${escape(labels.redirectMessage)} <a href="${escape(schedulePage.url)}">${escape(labels.redirectLink)}</a>.</p></body></html>`);
+  for (const [name, value] of calendarFiles(data)) files.set(name, value);
+  const result = validateOutput(root, data, files);
+  files.set('.source-manifest.json', JSON.stringify({sourceHash: sourceHash(root)}, null, 2) + '\n');
+  // Validate every output before replacing the generated folder.
+  const staging = path.join(root, '.course-build');
+  fs.rmSync(staging, {recursive: true, force: true});
+  for (const [name, value] of files) {
+    const target = inside(staging, name);
+    fs.mkdirSync(path.dirname(target), {recursive: true});
+    fs.writeFileSync(target, value);
+  }
+  fs.rmSync(path.join(root, 'dist'), {recursive: true, force: true});
+  fs.renameSync(staging, path.join(root, 'dist'));
+  return result;
+}
 
-fs.mkdirSync(path.join(out,'downloads'),{recursive:true});
-const regular=rows.filter(r=>!r.holiday);
-const icsEscape=s=>s.replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
-const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Tsinghua DP RL Fall 2026//Course Calendar//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:DP and RL - Tsinghua Fall 2026','X-WR-TIMEZONE:Asia/Shanghai'];
-for(const r of regular){const d=r.date.replaceAll('-','');lines.push('BEGIN:VEVENT',`UID:dp-rl-2026-${d}@course.chuanhao-li.com`,'DTSTAMP:20260914T000000Z',`DTSTART:${d}T015000Z`,`DTEND:${d}T041500Z`,'SUMMARY:Dynamic Programming and Reinforcement Learning',`LOCATION:${icsEscape(course.room)}`,`DESCRIPTION:${icsEscape('Teaching week '+r.week+'. Sections: 09:50-10:35; 10:40-11:25; 11:30-12:15 (China Standard Time). Based on the departmental timetable and public university calendar. Any holiday teaching adjustment is pending verification. No October 6 event is included. Proposed topic: '+r.lecture.title+'.')}`,'END:VEVENT');}
-lines.push('END:VCALENDAR');
-const folded=lines.map(line=>{const parts=[];while(Buffer.byteLength(line)>73){let i=72;while(Buffer.byteLength(line.slice(0,i))>72)i--;parts.push(line.slice(0,i));line=' '+line.slice(i);}parts.push(line);return parts.join('\r\n');});
-save('downloads/course-calendar.ics',folded.join('\r\n')+'\r\n');
-const quote=s=>'"'+String(s??'').replaceAll('"','""')+'"';
-save('downloads/course-schedule.csv',[['Teaching week','Date','Day','Start','End','Time zone','Room','Status','Proposed topic'],...rows.map(r=>[r.week,r.date,'Tuesday',r.holiday?'':'09:50',r.holiday?'':'12:15','Asia/Shanghai',r.holiday?'':course.room,r.holiday?'National Day holiday; makeup unverified':'Regular timetable; subject to university adjustments',r.lecture?.title||''])].map(r=>r.map(quote).join(',')).join('\r\n')+'\r\n');
-save('downloads/lecture-01-study-guide.md',`# Lecture 1: Sequential decisions and dynamic programming\n\nDynamic Programming and Reinforcement Learning\nTsinghua University, Fall 2026\n\nDate: September 15, 2026. Time: 09:50-12:15, China Standard Time.\nLocation: Teaching Building 4, Room 4401.\n\nThis is a proposed first-lecture study guide.\n\n## Learning objectives\n\n- Identify the state, action, transition, immediate cost and horizon.\n- Explain a policy as a rule for choosing actions in different states.\n- Compute optimal remaining costs by backward induction.\n- Explain how planning and learning from experience are connected.\n\n## Class sections\n\n1. 09:50-10:35: Motivation, course introduction and route-planning challenge.\n2. 10:40-11:25: States, actions, policies, values and a modeling exercise.\n3. 11:30-12:15: Backward induction, Bellman's idea and a bridge to RL and LLMs.\n\n## Route-planning problem\n\nFind a minimum-cost route from A to G. Edges: A-B: 2; A-C: 5; B-D: 4; B-E: 7; C-D: 2; C-E: 1; D-G: 4; E-G: 2.\n\nJ(G)=0. J(D)=4. J(E)=2.\nJ(B)=min(4+4,7+2)=8.\nJ(C)=min(2+4,1+2)=3.\nJ(A)=min(2+8,5+3)=8.\n\nThe optimal route is A-C-E-G, cost 8. A greedy immediate-cost rule gives A-B-D-G, cost 10. The policy must specify an action from B as well as C.\n\nFor a deterministic finite-horizon problem:\nJ_t(s)=min_a {c_t(s,a)+J_(t+1)(f_t(s,a))}, with terminal condition J_T(s)=g_T(s).\nChoose the smallest immediate cost plus optimal remaining cost.\n\n## LLM connection\n\nState: prompt and generated prefix. Action: next token. Policy: the language model's distribution over tokens. Reward: feedback on the completed answer. The token-appending transition can be known even when optimization requires sampled experience and approximation.\n\n## Review questions\n\n1. How does a policy differ from a route?\n2. Why can greedy action selection fail?\n3. What changes if E-G costs 6 instead of 2?\n4. What changes if travel costs are initially unknown?\n\n## Preparation\n\nBertsekas, Dynamic Programming and Optimal Control, Volume I, Chapter 1.\nSutton and Barto, Reinforcement Learning: An Introduction, Chapter 1.\n\nOfficial references:\n- ${refs.mit}\n- ${refs.sutton}\n`);
-console.log(`Generated ${6+lectures.length} English pages, ${regular.length} calendar events, and 3 downloads.`);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try { const result = buildSite(); console.log(`Built ${result.pages} English pages and ${result.events} calendar events from content/ and public/.`); }
+  catch (error) { console.error(`Build failed: ${error.message}`); process.exitCode = 1; }
+}

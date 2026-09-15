@@ -5,6 +5,14 @@
   "description": "English course website for Dynamic Programming and Reinforcement Learning, Fall 2026",
   "scripts": {
     "build": "node build.mjs",
-    "check": "node check.mjs"
+    "check": "node check.mjs",
+    "preview": "python3 preview.py",
+    "test": "node --test scripts/content.test.mjs"
+  },
+  "dependencies": {
+    "marked": "18.0.13"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -3,3 +3,5 @@
 *.zip
 node_modules/
 .openai/
+.course-build/
+__pycache__/
