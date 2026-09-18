@@ -19,7 +19,7 @@
     "date": "2026-10-06",
     "kind": "holiday",
     "title": "National Day holiday",
-    "note": "No class."
+    "note": "No class; no makeup scheduled."
   },
   {
     "week": 5,
@@ -80,10 +80,5 @@
     "week": 16,
     "date": "2026-12-29",
     "lectureId": 15
-  },
-  {
-    "week": null,
-    "date": null,
-    "lectureId": 16
   }
 ]

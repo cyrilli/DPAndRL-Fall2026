@@ -52,9 +52,9 @@ All internal links are relative, so the generated site can live under a reposito
 
 ## Course planning notes
 
-Schedule is the single index of dates, topics and materials. The old `lectures.html` address redirects there. Calendar evidence and the pending makeup arrangement are documented separately in [CALENDAR_VERIFICATION.md](CALENDAR_VERIFICATION.md). The public pages omit the administrative notes and calendar download controls.
+Schedule is the single index of dates, topics and materials. The old `lectures.html` address redirects there. Calendar evidence and the confirmed holiday adjustments are documented separately in [CALENDAR_VERIFICATION.md](CALENDAR_VERIFICATION.md). The public pages omit the administrative notes and calendar download controls.
 
-The current timetable has 15 regular meetings and one undated session. The lecture outline is tentative. Assignment, project and grading details remain unreleased, and only Lecture 1 currently has extended notes. Update these through the content files as plans and materials are finalized.
+The verified timetable has 15 Tuesday meetings; October 6 is canceled with no makeup scheduled by the university notice. The former extra synthesis session is retained only as an optional [planning outline](planning/synthesis-outline.json), outside the published schedule. The lecture outline is tentative. Assignment, project and grading details remain unreleased, and only Lecture 1 currently has extended notes. Update these through the content files as plans and materials are finalized.
 
 ## Sources and attribution
 

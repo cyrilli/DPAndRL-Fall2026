@@ -116,14 +116,17 @@ test('course information and meeting-time edits reach pages and calendar downloa
 
 test('explicit holiday and Saturday makeup dates control the schedule and exported events', async t => {
   const f = fixture(t);
+  const lastClass = f.json('content/schedule.json').filter(row => row.date && row.kind !== 'holiday').at(-1);
+  const makeupPage = `lectures/${String(lastClass.lectureId).padStart(2, '0')}.html`;
   f.update('content/schedule.json', schedule => {
     const holiday = schedule.find(row => row.kind === 'holiday');
     holiday.date = '2026-10-07';
     holiday.title = 'Revised university holiday';
     holiday.note = 'Teaching is suspended on this date.';
-    const makeup = schedule.find(row => row.lectureId === 16);
+    const makeup = schedule.find(row => row.lectureId === lastClass.lectureId);
     makeup.date = '2027-01-09';
     makeup.kind = 'makeup';
+    makeup.week = null;
   });
 
   await buildAndCheck(f);
@@ -132,7 +135,7 @@ test('explicit holiday and Saturday makeup dates control the schedule and export
   assert.ok(schedule.includes('Teaching is suspended on this date.'));
   assert.match(schedule, /Oct(?:ober)?\s+7/);
   assert.match(schedule, /Jan(?:uary)?\s+9/);
-  assert.match(f.read('dist/lectures/16.html'), /Jan(?:uary)?\s+9/);
+  assert.match(f.read(`dist/${makeupPage}`), /Jan(?:uary)?\s+9/);
   const dates = calendarValues(calendar(f), 'DTSTART').map(value => value.slice(0, 8));
   assert.ok(dates.includes('20270109'), 'a confirmed Saturday makeup is included without a Tuesday assumption');
   assert.ok(!dates.includes('20261007'), 'the explicit holiday is excluded');
@@ -141,6 +144,8 @@ test('explicit holiday and Saturday makeup dates control the schedule and export
 
 test('nonconsecutive lecture IDs and multiple materials work, and removed lectures leave no stale page', async t => {
   const f = fixture(t);
+  const previousLastId = f.json('content/lectures.json').at(-1).id;
+  const previousLastPage = `lectures/${String(previousLastId).padStart(2, '0')}.html`;
   const localMaterial = 'downloads/extra-practice.txt';
   const externalMaterial = 'https://example.edu/course/extra-slides.pdf';
   f.write(`public/${localMaterial}`, 'An extra classroom practice problem.\n');
@@ -171,8 +176,8 @@ test('nonconsecutive lecture IDs and multiple materials work, and removed lectur
   assert.ok(links(schedule).includes(localMaterial));
   assert.ok(links(detail).includes(`../${localMaterial}`));
   assert.ok(links(schedule).includes(externalMaterial) && links(detail).includes(externalMaterial));
-  assert.ok(localTargets(f.read('dist/lectures/16.html'), 'lectures/16.html').includes('lectures/42.html'), 'next follows lecture order, not ID arithmetic');
-  assert.ok(localTargets(detail, 'lectures/42.html').includes('lectures/16.html'), 'previous follows lecture order, not ID arithmetic');
+  assert.ok(localTargets(f.read(`dist/${previousLastPage}`), previousLastPage).includes('lectures/42.html'), 'next follows lecture order, not ID arithmetic');
+  assert.ok(localTargets(detail, 'lectures/42.html').includes(previousLastPage), 'previous follows lecture order, not ID arithmetic');
   assert.equal(f.read(`dist/${localMaterial}`), 'An extra classroom practice problem.\n');
 
   f.update('content/lectures.json', lectures => lectures.splice(lectures.findIndex(lecture => lecture.id === 42), 1));
@@ -180,7 +185,7 @@ test('nonconsecutive lecture IDs and multiple materials work, and removed lectur
   await buildAndCheck(f);
   assert.equal(fs.existsSync(path.join(f.root, 'dist/lectures/42.html')), false);
   assert.ok(!f.read('dist/schedule.html').includes('An additional policy workshop'));
-  assert.ok(!localTargets(f.read('dist/lectures/16.html'), 'lectures/16.html').includes('lectures/42.html'));
+  assert.ok(!localTargets(f.read(`dist/${previousLastPage}`), previousLastPage).includes('lectures/42.html'));
 });
 
 test('invalid lecture references, dates and missing materials fail before replacing the working site', async t => {

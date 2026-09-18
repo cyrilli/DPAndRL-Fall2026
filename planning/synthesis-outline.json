@@ -1,0 +1,14 @@
+{
+  "title": "Synthesis and project discussion",
+  "module": "Synthesis",
+  "kind": "Review",
+  "summary": "Connect modeling, planning, learning and approximation; discuss experiments and revisit the semester's core ideas. Optional outlook topics include risk-aware decisions, offline RL and continual learning, as time permits.",
+  "objectives": [
+    "Select an appropriate method for a sequential decision problem.",
+    "Explain the assumptions and limitations of that method.",
+    "Connect dynamic programming to modern reinforcement learning."
+  ],
+  "reading": "Review lecture notes and any completed practice exercises.",
+  "materials": [],
+  "status": "Optional planning outline; not a scheduled class."
+}
