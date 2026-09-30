@@ -47,6 +47,9 @@ h2 { margin-top: 2rem; padding-bottom: 0; border: 0; font-size: 1.5rem; }
 h3 { margin-top: 1.5rem; font-size: 1.2rem; }
 strong { font-weight: 600; }
 #title-block-header { margin-bottom: 2rem; }
+body.course-home #title-block-header h1.title {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+}
 #title-block-header .subtitle { color: var(--course-muted); font-size: 1.05rem; }
 #quarto-content { padding-top: 1.5rem; }
 main.content { padding-bottom: 2rem; }

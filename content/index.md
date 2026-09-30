@@ -1,5 +1,6 @@
 ---
 title: Dynamic Programming and Reinforcement Learning
+body-classes: course-home
 sidebar: false
 toc: false
 ---
