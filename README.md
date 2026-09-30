@@ -16,7 +16,7 @@ python3 site.py preview
 
 Open [http://127.0.0.1:8765/](http://127.0.0.1:8765/). Save a source file and refresh the browser: the next page request rebuilds changed sources. Stop the preview with Ctrl+C. To use another port, run `python3 site.py preview --port 8766`.
 
-The preview reports invalid configuration, missing local files, and broken section links. Fix the source and refresh to retry; an unsuccessful build preserves the last successful output.
+The preview keeps working when a link is wrong. Missing files, absolute filesystem paths, and broken section links appear in a small preview-only warning with the Markdown filename to fix. Other edits still render. If Quarto cannot render the source (for example, invalid configuration), the preview serves the last successful build with an error notice. Fix the source and refresh to rebuild; the same failed edit is not rebuilt on every page request. If no successful build exists yet, the preview shows the error until the source is fixed.
 
 ## Where to edit
 
@@ -129,7 +129,7 @@ python3 site.py build
 python3 site.py check
 ```
 
-Build renders the Markdown and checks local page, image, PDF, and section links before replacing `dist/`. Check verifies the existing output and detects source changes that need a rebuild. For changes to the reusable tooling, run `python3 -m unittest discover -s tests`.
+Build renders the Markdown and checks local page, image, PDF, and section links before replacing `dist/`. Build and check remain strict for publishing: fix any warnings shown in the local preview first. A rejected build preserves the previously published website. Preview notices are added only by the local server and are never included in the published pages. Check verifies the existing output and detects source changes that need a rebuild. For changes to the reusable tooling, run `python3 -m unittest discover -s tests`.
 
 Commit and push **source files** to `main`. The supplied GitHub Actions workflow builds, checks, tests, and deploys the site; do not commit `dist/`. Set **Settings → Pages → Source** to **GitHub Actions** for a new repository. A local preview does not update the live website.
 
