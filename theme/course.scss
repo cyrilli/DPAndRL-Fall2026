@@ -22,6 +22,9 @@ $sidebar-hl: #75566f;
 $code-bg: #f0ece6;
 $code-color: #55464f;
 $table-border-color: #e3ddd5;
+$grid-body-width: 900px;
+$grid-sidebar-width: 180px;
+$grid-margin-width: 180px;
 
 /*-- scss:rules --*/
 
@@ -46,6 +49,14 @@ strong { font-weight: 600; }
 #title-block-header .subtitle { color: var(--course-muted); font-size: 1.05rem; }
 #quarto-content { padding-top: 1.5rem; }
 main.content { padding-bottom: 2rem; }
+
+/* Use the same Quarto grid even when a page has no sidebar or contents list. */
+@media (min-width: 992px) {
+  #quarto-content { @include page-columns-float-wide(); }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #quarto-content { @include page-columns-float-mid(); }
+}
 
 /* Quiet navigation keeps the course material in the foreground. */
 .navbar { padding-block: .75rem; border-bottom: 1px solid var(--course-rule); }
@@ -144,10 +155,6 @@ table { width: 100%; font-size: .93rem; line-height: 1.6; }
 .table > :not(caption) > * > * { padding: .8rem .65rem; border-color: var(--course-rule); }
 thead th { color: #625c57; font-weight: 600; }
 tbody td { vertical-align: top; }
-body.page-layout-full main.content { width: 100%; }
-body.page-layout-full table, table.schedule { table-layout: auto; }
-body.page-layout-full th:first-child,
-body.page-layout-full td:first-child { white-space: nowrap; }
 .cell-output-display, .table-responsive { overflow-x: auto; }
 
 @media (max-width: 767px) {

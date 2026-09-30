@@ -1,7 +1,6 @@
 ---
 title: Schedule & materials
 sidebar: false
-page-layout: full
 toc: false
 ---
 
