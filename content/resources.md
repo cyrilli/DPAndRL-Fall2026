@@ -42,8 +42,10 @@ For a Python refresher, see the [Stanford Python and NumPy tutorial](https://cs2
 ## Reference courses
 
 | Course | Focus | Materials |
-| :--- | :--- |
+| :--- | :--- | :--- |
 | **MIT 6.231** — Dynamic Programming and Stochastic Control | Classical DP, stochastic control and approximate DP. | [Lecture notes](https://ocw.mit.edu/courses/6-231-dynamic-programming-and-stochastic-control-fall-2015/pages/lecture-notes/) |
+| **Polytechnique Montreal / Amir-massoud Farahmand** — Introduction to Reinforcement Learning, Fall 2025 | Mathematical foundations, known-model planning, learning from data, value approximation and policy search. | [Slides, annotated slides and course notes](https://amfarahmand.github.io/IntroRL/fall2025.html) |
+| **Tsinghua University** — Reinforcement Learning, Fall 2026 | Bandits, MDPs, DP, sampled learning and deep RL. Slides are posted as the course progresses. | [Lecture materials](https://coai.cs.tsinghua.edu.cn/Courses/RL2026/_site/lectures/) |
 | **UCL / David Silver** — Reinforcement Learning | A compact introduction to MDPs, DP, MC, TD and policy gradients. | [Slides and videos](https://www.davidsilver.uk/teaching/) |
 | **Stanford CS234** — Reinforcement Learning, Winter 2026 | Core RL and selected modern extensions. | [Lecture materials](https://web.stanford.edu/class/cs234/modules.html) |
 | **Berkeley CS185/285** — Deep Reinforcement Learning, Spring 2026 | Deep RL, offline learning and LLM applications. | [Course materials](https://rail.eecs.berkeley.edu/deeprlcourse/) |
