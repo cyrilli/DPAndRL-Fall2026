@@ -155,6 +155,7 @@ table { width: 100%; font-size: .93rem; line-height: 1.6; }
 .table > :not(caption) > * > * { padding: .8rem .65rem; border-color: var(--course-rule); }
 thead th { color: #625c57; font-weight: 600; }
 tbody td { vertical-align: top; }
+body.course-schedule td:nth-child(2) { white-space: nowrap; }
 .cell-output-display, .table-responsive { overflow-x: auto; }
 
 @media (max-width: 767px) {

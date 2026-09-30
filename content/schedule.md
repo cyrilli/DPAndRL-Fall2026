@@ -1,6 +1,7 @@
 ---
 title: Schedule & materials
 sidebar: false
+body-classes: course-schedule
 toc: false
 ---
 
