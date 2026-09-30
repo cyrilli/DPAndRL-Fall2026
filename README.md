@@ -145,4 +145,6 @@ The current course is published at [www.chuanhao-li.com/DPAndRL-Fall2026](https:
 
 Keep `project.output-dir: _site` in the settings: the wrapper collects that temporary Quarto output into `dist/`. The renderer and theme contain no course-specific facts and can be reused unchanged. Optional visual changes belong in `theme/course.scss`.
 
+All main pages and note articles share `--course-content-width` in `theme/course.scss` (1120px). On wide screens, note navigation occupies the space beside that centered column. Below 1700px, the sidebar uses its navigation button and the table of contents becomes an “On this page” disclosure; `theme/navigation.html` supplies that disclosure without changing the Markdown.
+
 The mathematical-note presentation is inspired by [Zhuoran Yang's S&DS 685 notes](https://github.com/ZhuoranYang/sds685-notes); this site uses independently authored content and styles with Quarto's built-in scholarly features.

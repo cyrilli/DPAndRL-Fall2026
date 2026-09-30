@@ -1,0 +1,20 @@
+<script>
+// Keep the same TOC links available when the reading column fills the screen.
+document.addEventListener('DOMContentLoaded', () => {
+  const toc = document.querySelector('body.nav-sidebar #quarto-margin-sidebar #TOC');
+  if (!toc) return;
+  const disclosure = document.createElement('details');
+  disclosure.className = 'course-toc';
+  const summary = document.createElement('summary');
+  summary.textContent = toc.querySelector('#toc-title')?.textContent || 'On this page';
+  toc.before(disclosure);
+  disclosure.append(summary, toc);
+  const wide = window.matchMedia('(min-width: 1700px)');
+  const update = () => { disclosure.open = wide.matches; };
+  update();
+  wide.addEventListener('change', update);
+  toc.addEventListener('click', (event) => {
+    if (!wide.matches && event.target.closest('a')) disclosure.open = false;
+  });
+});
+</script>

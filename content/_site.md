@@ -58,6 +58,7 @@ format:
     theme:
     - cosmo
     - theme/course.scss
+    include-after-body: theme/navigation.html
     html-math-method:
       method: katex
       url: /theme/vendor/katex/

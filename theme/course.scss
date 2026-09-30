@@ -29,6 +29,7 @@ $grid-margin-width: 180px;
 /*-- scss:rules --*/
 
 :root {
+  --course-content-width: 1120px;
   --course-muted: #746d66;
   --course-rule: #e3ddd5;
   --course-serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
@@ -50,11 +51,81 @@ strong { font-weight: 600; }
 #quarto-content { padding-top: 1.5rem; }
 main.content { padding-bottom: 2rem; }
 
-/* Main tabs use the available width; detailed notes retain their reading grid. */
+/* One reading width for main tabs and the center of detailed notes. */
 body.fullcontent:not(.nav-sidebar) #quarto-content {
   display: block;
-  width: min(1120px, calc(100% - 3rem));
+  width: min(var(--course-content-width), calc(100% - 3rem));
   margin-inline: auto;
+}
+
+/* Keep Quarto's named lines so its margin content still has a place to go. */
+@media (min-width: 1700px) {
+  body.nav-sidebar #quarto-content {
+    display: grid;
+    width: 100%;
+    padding-inline: 1.5rem;
+    grid-template-columns:
+      [screen-start screen-start-inset page-start page-start-inset] minmax(0, 1fr)
+      [body-start-outset body-start] 1.5rem
+      [body-content-start] var(--course-content-width)
+      [body-content-end] 1.5rem
+      [body-end body-end-outset] minmax(0, 1fr)
+      [page-end-inset page-end screen-end-inset screen-end];
+  }
+  body.nav-sidebar #quarto-sidebar { padding-left: 0; }
+  .course-toc > summary { display: none; }
+}
+
+/* Switch to navigation controls before the side panes squeeze the article. */
+@media (max-width: 1699.98px) {
+  body.nav-sidebar {
+    #quarto-content { display: block; }
+    main.content, #quarto-margin-sidebar {
+      width: min(var(--course-content-width), calc(100% - 3rem));
+      margin-inline: auto;
+    }
+    .quarto-secondary-nav {
+      display: block;
+      background: $body-bg;
+      border-bottom: 1px solid var(--course-rule);
+    }
+    .quarto-secondary-nav .container-fluid {
+      max-width: calc(var(--course-content-width) + 3rem);
+      padding-inline: 1.5rem;
+      align-items: center;
+    }
+    .quarto-secondary-nav .breadcrumb { margin-bottom: 0; }
+    .quarto-title-breadcrumbs { display: none !important; }
+    #quarto-sidebar.collapse:not(.show) { display: none; }
+    #quarto-content #quarto-sidebar.show, #quarto-content #quarto-sidebar.collapsing {
+      display: block;
+      position: fixed;
+      left: 0;
+      width: min(320px, 85vw);
+      min-height: 0;
+      height: 100%;
+      padding: 1.5rem;
+      z-index: 1050;
+    }
+    #quarto-sidebar .sidebar-menu-container { white-space: normal; min-width: 0; }
+    #quarto-sidebar-glass.show, #quarto-sidebar-glass.collapsing {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: #36343244;
+      z-index: 1000;
+    }
+    #quarto-margin-sidebar {
+      display: block;
+      position: static;
+      max-height: none !important;
+      padding-block: .5rem;
+    }
+    .course-toc > summary { cursor: pointer; color: var(--course-muted); font-size: .9rem; }
+    .course-toc #toc-title { display: none; }
+    .course-toc #TOC { display: block; margin-top: .75rem; }
+    .course-toc #TOC ul { display: block; }
+  }
 }
 
 /* Quiet navigation keeps the course material in the foreground. */
