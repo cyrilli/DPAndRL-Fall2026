@@ -1,7 +1,8 @@
 .DS_Store
 .env*
 *.zip
-node_modules/
-.openai/
-.course-build/
+.tools/
+dist/
 __pycache__/
+*.pyc
+.openai/

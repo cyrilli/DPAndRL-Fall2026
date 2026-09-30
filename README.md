@@ -1,69 +1,148 @@
-# Dynamic Programming and Reinforcement Learning — Fall 2026
+# Markdown course website
 
-An English course website for Chuanhao Li and Chengli Zhu at Tsinghua University.
+All course text, dates, links, and navigation settings live in [`content/`](content/). Edit Markdown, save, and refresh the preview. No JSON files, HTML templates, or programming changes are needed for routine course updates.
 
-**Start with [EDITING.md](EDITING.md)** for a page-by-page map and examples of changing dates, uploading slides, posting assignments and updating contacts. Routine content edits do not require changing the generator.
+The site uses [Quarto](https://quarto.org/) for Markdown, mathematics, theorem numbering, navigation, and search. `site.py` provides the build, link checks, and local preview; `theme/` contains the shared presentation styles.
 
-## Edit and preview
+## Start locally
 
-Use Node.js 22 or newer and Python 3. From this repository's folder:
+Install **Python 3** and **Quarto 1.10.18** using the [official Quarto installation instructions](https://quarto.org/docs/get-started/). No npm installation or Python packages are required.
 
-```sh
-npm ci
-npm run preview
-```
-
-Open [the local preview](http://127.0.0.1:8765/). Save an editable source file and refresh the browser; the preview rebuilds the site and disables caching. An invalid edit produces a source-specific error while preserving the last successful build. Stop the server with Ctrl+C. If the preview is already running, just refresh it.
-
-| Content you want to change | Editable source |
-| --- | --- |
-| Page text and sections | [`content/pages/`](content/pages/) — one Markdown file per page |
-| Course facts and teaching team | [`content/course.json`](content/course.json) |
-| Home updates | [`content/announcements.json`](content/announcements.json) |
-| Dates and holidays | [`content/schedule.json`](content/schedule.json) |
-| Lecture titles, objectives, readings and slide links | [`content/lectures.json`](content/lectures.json) |
-| Extended lecture notes | [`content/lectures/`](content/lectures/) |
-| Textbooks and reference links | [`content/resources.json`](content/resources.json) |
-| Navigation, footer and shared labels | [`content/site.json`](content/site.json) |
-| Styling and images | [`public/assets/`](public/assets/) |
-| Slides and handouts | [`public/downloads/`](public/downloads/) |
-
-**Do not edit `dist/`.** The entire folder is generated, including assets. Put source assets in `public/`; they are copied to the site root. Page sources use site-relative links such as `downloads/lecture-02.pdf`, including inside nested lecture notes.
-
-## Build and validate
+From this repository's folder, run:
 
 ```sh
-npm run build
-npm run check
-npm test
+python3 site.py preview
 ```
 
-The builder checks required fields, dates, lecture references, and local links before replacing the generated output. The checker also detects source edits that have not been rebuilt. Integration tests exercise common edits in temporary copies of the content.
+Open [http://127.0.0.1:8765/](http://127.0.0.1:8765/). Save a source file and refresh the browser: the next page request rebuilds changed sources. Stop the preview with Ctrl+C. To use another port, run `python3 site.py preview --port 8766`.
 
-`build.mjs` handles rendering; `lib/content.mjs` handles validation; `templates/layout.html` is the shared HTML shell. Change these only when extending the site's behavior or layout. Markdown is rendered with the version of Marked recorded in `package-lock.json`.
+The preview reports invalid configuration, missing local files, and broken section links. Fix the source and refresh to retry; an unsuccessful build preserves the last successful output.
 
-## Publish on GitHub Pages
+## Where to edit
 
-The selected repository is [cyrilli/DPAndRL-Fall2026](https://github.com/cyrilli/DPAndRL-Fall2026). Commit and push the edited sources and rebuilt `dist/` to `main`. The supplied workflow installs dependencies, builds, checks, tests, and deploys `dist/` using GitHub's Pages actions.
+```text
+content/
+├── _site.md                 # Course name, tabs, notes sidebar, footer, site URL
+├── index.md                 # Homepage, teaching team, announcements
+├── schedule.md              # Actual schedule table and material links
+├── assignments.md           # Assignment index
+├── project.md               # Labs/project page
+├── resources.md             # Books and reference links
+├── lectures/                # One editable outline per lecture
+├── notes/                   # Extended mathematical notes and notes index
+├── materials/
+│   ├── slides/              # PDFs
+│   └── assignments/         # Handouts, code, data
+├── assets/                  # Images used in the pages
+├── _templates/              # Unpublished starting points for notes/assignments
+└── _planning/               # Unpublished planning notes
+site.py                      # Reusable build/preview commands
+theme/                      # Shared styling and bundled math renderer
+.github/workflows/pages.yml  # GitHub Pages deployment
+```
 
-The course website is published at [www.chuanhao-li.com/DPAndRL-Fall2026](https://www.chuanhao-li.com/DPAndRL-Fall2026/). GitHub Pages uses **GitHub Actions** under **Settings → Pages**. The repository is public, and successful pushes to `main` publish updates automatically. The standard `cyrilli.github.io/DPAndRL-Fall2026/` address redirects to the custom domain inherited from the personal website.
+`dist/` is generated and ignored by Git. Do not edit it. Files and folders beginning with `_` or `.` are excluded from page rendering; `_site.md` is the settings file. Planning files and templates stay in the repository but do not appear on the website.
 
-All internal links are relative, so the generated site can live under a repository path or a subfolder of a personal website. To use an existing personal website, copy the contents of `dist/` into the chosen course subfolder and keep that website's existing deployment workflow.
+Each ordinary page starts with a small YAML block and then its actual Markdown content:
 
-## Course planning notes
+```markdown
+---
+title: Assignments
+sidebar: false
+toc: true
+---
 
-Schedule is the single index of dates, topics and materials. The old `lectures.html` address redirects there. Calendar evidence and the confirmed holiday adjustments are documented separately in [CALENDAR_VERIFICATION.md](CALENDAR_VERIFICATION.md). The public pages omit the administrative notes and calendar download controls.
+## Assignment releases
 
-The verified timetable has 15 Tuesday meetings; October 6 is canceled with no makeup scheduled by the university notice. The former extra synthesis session is retained only as an optional [planning outline](planning/synthesis-outline.json), outside the published schedule. The lecture outline is tentative. Assignment, project and grading details remain unreleased, and only Lecture 1 currently has extended notes. Update these through the content files as plans and materials are finalized.
+Write the page content here.
+```
 
-## Sources and attribution
+`title` sets the page heading, `toc` controls its table of contents, and `sidebar: false` hides the notes sidebar. Notes use `sidebar: notes`. **The table in `content/schedule.md` is the displayed schedule**: edit its rows directly.
 
-- Structure inspired by [Tsinghua RL 2025](https://coai.cs.tsinghua.edu.cn/Courses/RL2025/_site/index.html).
-- Visual restraint inspired by [Berkeley CS285](https://rail.eecs.berkeley.edu/deeprlcourse/), with lighter typography, warm paper tones and muted purple accents.
-- Implementation is a small, independently authored static site. No Jekyll runtime or copied template is required.
-- Instructor information: [Chuanhao Li](https://www.chuanhao-li.com/), [official faculty profile](https://www.ie.tsinghua.edu.cn/info/1051/4043.htm), [Chengli Zhu](https://www.ie.tsinghua.edu.cn/info/1057/1094.htm).
-- Instructor portrait: the image used on [Chuanhao Li's homepage](https://cyrilli.github.io/images/portrait_photo.png).
-- Muted purple accents reflect the course's Tsinghua affiliation within a warm, understated palette.
-- Reference-course slides are linked to their original publishers; the local teaching archive is not uploaded or redistributed by this site.
+## Change tabs and navigation
 
-The `.openai/` folder is local preview-registration metadata and is excluded from the GitHub package. This website is prepared for GitHub Pages; no Sites deployment is required.
+Edit the YAML block at the top of [`content/_site.md`](content/_site.md). Under `website.navbar.left`, each entry names a tab and its source page:
+
+```yaml
+- text: Project
+  href: project.md
+```
+
+Delete these two lines to remove the Project tab, or move them to change the tab order. This hides the tab while keeping the page available through other links. To remove the page too, delete `content/project.md` or move it into `_planning/`, then remove links pointing to it.
+
+Add a tab by creating its Markdown page and adding a matching entry. Update `website.sidebar` to choose which notes appear in the notes sidebar; sidebar paths are relative to `content/`. Page titles are read from their source files.
+
+## Add slides or a child page
+
+Put a PDF at `content/materials/slides/lecture-02.pdf`. In the appropriate row of `content/schedule.md`, write:
+
+```markdown
+[Slides](materials/slides/lecture-02.pdf) · [Outline](lectures/02.md)
+```
+
+For an assignment description, copy `_templates/assignment.md` to `content/assignments/hw1.md`, remove `draft: true`, and replace the example content. Add a link in `content/assignments.md`:
+
+```markdown
+[Assignment 1](assignments/hw1.md)
+```
+
+A child page needs no new tab. Quarto renders it automatically. Links are **relative to the Markdown file containing them**; from `assignments/hw1.md`, use:
+
+```markdown
+[Back to assignments](../assignments.md)
+[Handout](../materials/assignments/hw1.pdf)
+[Related note](../notes/bellman-operators.md)
+```
+
+Create the referenced files before building. Link to source `.md` files; Quarto converts those links to `.html`. For a stable section link, write a heading such as `## Preparation {#preparation}` and link to `resources.md#preparation`. Avoid paths starting with `/`, so links work under any course repository URL.
+
+## Write mathematical notes
+
+Copy [`content/_templates/note.md`](content/_templates/note.md) into `content/notes/`, remove `draft: true`, and add the note to the sidebar in `_site.md` and to `notes/index.md`. The [Bellman operators note](content/notes/bellman-operators.md) is a complete working example.
+
+Use `$V(s)$` for inline mathematics. Numbered equations, theorems, and proofs use native Quarto syntax:
+
+```markdown
+::: {#thm-square}
+## Nonnegative squares
+
+For every real number $x$,
+
+$$
+x^2 \geq 0.
+$$ {#eq-square}
+:::
+
+::: {.proof}
+A product of two equal real factors is nonnegative.
+:::
+
+See @thm-square and @eq-square.
+```
+
+Use `#lem-name` for a lemma, `#def-name` for a definition, and `#cor-name` for a corollary. Give each label a unique name on the page. Quarto supplies numbering and clickable references; `number-sections: true` numbers section headings. See [Quarto's cross-reference documentation](https://quarto.org/docs/authoring/cross-references.html) for additional options.
+
+## Build and publish
+
+```sh
+python3 site.py build
+python3 site.py check
+```
+
+Build renders the Markdown and checks local page, image, PDF, and section links before replacing `dist/`. Check verifies the existing output and detects source changes that need a rebuild. For changes to the reusable tooling, run `python3 -m unittest discover -s tests`.
+
+Commit and push **source files** to `main`. The supplied GitHub Actions workflow builds, checks, tests, and deploys the site; do not commit `dist/`. Set **Settings → Pages → Source** to **GitHub Actions** for a new repository. A local preview does not update the live website.
+
+The current course is published at [www.chuanhao-li.com/DPAndRL-Fall2026](https://www.chuanhao-li.com/DPAndRL-Fall2026/).
+
+## Reuse for another course
+
+1. Copy the repository into the new course repository; generated output and local tools are unnecessary.
+2. Edit the course name, footer, `website.site-url`, tabs, and sidebar in `content/_site.md`.
+3. Replace the homepage, schedule, readings, lecture outlines, and notes with the new course's Markdown. Keep or remove tabs as needed; remove links to deleted pages.
+4. Replace files under `content/materials/` and `content/assets/`, then preview and build.
+5. Enable GitHub Actions for Pages and push to `main`.
+
+Keep `project.output-dir: _site` in the settings: the wrapper collects that temporary Quarto output into `dist/`. The renderer and theme contain no course-specific facts and can be reused unchanged. Optional visual changes belong in `theme/course.scss`.
+
+The mathematical-note presentation is inspired by [Zhuoran Yang's S&DS 685 notes](https://github.com/ZhuoranYang/sds685-notes); this site uses independently authored content and styles with Quarto's built-in scholarly features.
