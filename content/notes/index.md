@@ -1,6 +1,6 @@
 ---
 title: Course notes
-sidebar: notes
+sidebar: false
 body-classes: course-notes
 toc: false
 ---

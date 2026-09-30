@@ -50,12 +50,11 @@ strong { font-weight: 600; }
 #quarto-content { padding-top: 1.5rem; }
 main.content { padding-bottom: 2rem; }
 
-/* Use the same Quarto grid even when a page has no sidebar or contents list. */
-@media (min-width: 992px) {
-  #quarto-content { @include page-columns-float-wide(); }
-}
-@media (min-width: 768px) and (max-width: 991.98px) {
-  #quarto-content { @include page-columns-float-mid(); }
+/* Main tabs use the available width; detailed notes retain their reading grid. */
+body.fullcontent:not(.nav-sidebar) #quarto-content {
+  display: block;
+  width: min(1120px, calc(100% - 3rem));
+  margin-inline: auto;
 }
 
 /* Quiet navigation keeps the course material in the foreground. */
@@ -155,6 +154,8 @@ table { width: 100%; font-size: .93rem; line-height: 1.6; }
 .table > :not(caption) > * > * { padding: .8rem .65rem; border-color: var(--course-rule); }
 thead th { color: #625c57; font-weight: 600; }
 tbody td { vertical-align: top; }
+#teaching-team th:first-child,
+#teaching-team td:first-child { white-space: nowrap; width: 9rem; }
 body.course-schedule td:nth-child(2) { white-space: nowrap; }
 .cell-output-display, .table-responsive { overflow-x: auto; }
 

@@ -2,6 +2,9 @@
 title: Reading and study resources
 sidebar: false
 toc: true
+toc-location: body
+grid:
+  content-mode: full
 ---
 
 Core texts, preparation, and reference courses for dynamic programming and reinforcement learning.
