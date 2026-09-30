@@ -14,7 +14,7 @@ Tuesdays, 09:50–12:15 · Teaching Building 4, Room 4401. All dates are in 2026
 | 3 | 2026-09-29 | 3 | Stochastic dynamic programming | [Outline](lectures/03.md) |
 | 4 | 2026-10-06 | — | **National Day holiday** — No class; no makeup scheduled. | — |
 | 5 | 2026-10-13 | 4 | Infinite-horizon problems | [Outline](lectures/04.md) |
-| 6 | 2026-10-20 | 5 | Value iteration and policy iteration | [Outline](lectures/05.md) |
+| 6 | 2026-10-20 | 5 | Value iteration and policy iteration | [Outline](lectures/05.md) · [Notes](notes/bellman-operators.md) |
 | 7 | 2026-10-27 | 6 | Approximate DP and online planning | [Outline](lectures/06.md) |
 | 8 | 2026-11-03 | 7 | Lab 1: resource-constrained path planning | [Outline](lectures/07.md) |
 | 9 | 2026-11-10 | 8 | Bandits, exploration and regret | [Outline](lectures/08.md) |
