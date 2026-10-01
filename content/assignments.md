@@ -4,17 +4,13 @@ sidebar: false
 toc: false
 ---
 
-Written exercises and computational work will connect the mathematical ideas to concrete decision problems.
+Contact [Zhengyu Ye](mailto:zy-ye20@mails.tsinghua.edu.cn) for assignment-related questions and grading.
 
 ## Assignment releases
 
 No assignments have been released for Fall 2026. Confirmed assignments, instructions and deadlines will appear here.
 
-## Assignment questions
-
-Contact [Zhengyu Ye](mailto:zy-ye20@mails.tsinghua.edu.cn) for assignment-related questions and grading.
-
-## Written exercises
+<!-- ## Written exercises
 
 The proposed exercises will cover modeling, Bellman recursions, policy evaluation and the analysis of learning algorithms.
 
@@ -30,4 +26,4 @@ See the proposed [lab directions](project.md).
 
 Read the [first lecture study guide](lectures/01.md) and try the route-planning problem. This is a preparation activity, not a graded assignment.
 
-For programming preparation, review Python arrays, functions and basic numerical computation. The [Stanford Python and NumPy tutorial](https://cs231n.github.io/python-numpy-tutorial/) is a useful reference.
+For programming preparation, review Python arrays, functions and basic numerical computation. The [Stanford Python and NumPy tutorial](https://cs231n.github.io/python-numpy-tutorial/) is a useful reference. -->

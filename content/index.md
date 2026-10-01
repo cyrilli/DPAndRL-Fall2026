@@ -9,7 +9,7 @@ toc: false
 
 ## Updates
 
-- **September 15:** The [schedule](schedule.md) and [Lecture 1 study guide](lectures/01.md) are available.
+- **September 30:** Course website is up and the [slides for the first three lectures](schedule.md) are available.
 - **October 6:** National Day holiday. No class; no makeup scheduled.
 
 ## Course description

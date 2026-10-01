@@ -1,5 +1,5 @@
 ---
-title: Labs and project
+title: Labs and Project
 sidebar: false
 toc: false
 ---

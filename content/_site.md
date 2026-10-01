@@ -7,18 +7,18 @@ project:
   - assets/**
   - theme/vendor/katex/**
 website:
-  title: DP & RL
+  title: DP & RL Course
   site-url: https://www.chuanhao-li.com/DPAndRL-Fall2026/
   navbar:
     left:
     - text: Home
       href: index.md
-    - text: Schedule
+    - text: Schedule & Materials
       href: schedule.md
     - text: Assignments
       href: assignments.md
-    - text: Project
-      href: project.md
+    # - text: Project
+    #   href: project.md
     - text: Notes
       href: notes/index.md
     - text: Resources
