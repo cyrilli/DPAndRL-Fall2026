@@ -4,19 +4,21 @@ sidebar: false
 toc: false
 ---
 
-The course includes two lab sessions led by [Chengli Zhu](mailto:zhcl@tsinghua.edu.cn). The directions below are tentative; handouts and assessment rules will be announced.
+The course includes two lab sessions led by [Chengli Zhu](mailto:zhcl@tsinghua.edu.cn). Detailed instructions and assessment rules will be announced.
 
-## Lab 1: Resource-constrained paths
+## Lab 1: Sequential decision modeling and dynamic programming
 
-Find a route while respecting a limited resource such as energy or time. Use the state to track that resource and compare the resulting policy with an unconstrained shortest path.
+**Week 8 · November 3, 2026.** Model sequential decision problems and solve them using dynamic programming.
 
-[Learning objectives](lectures/07.md)
+[Lab session](lectures/07.md)
 
-## Lab 2: Learning for sequential decisions
+## Lab 2: Reinforcement learning for sequential decision problems
 
-Train and evaluate a policy on a small dynamic decision problem. Compare against a simple baseline and examine performance across repeated runs.
+**Week 13 · December 8, 2026.** Solve sequential decision problems using reinforcement learning.
 
-[Learning objectives](lectures/15.md)
+[Lab session](lectures/12.md)
+
+Detailed lab instructions will be announced on the [Assignments page](assignments.md).
 
 ## Optional direction: RL for language models
 

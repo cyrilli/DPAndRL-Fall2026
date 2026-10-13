@@ -20,6 +20,15 @@ This course covers the formulation and applications of sequential decision-makin
 **Location:** Teaching Building 4, Room 4401.\
 **Prerequisites:** Probability, linear algebra and calculus, and Python programming. See [preparation and readings](resources.md#preparation).
 
+## Assessment and grading {#assessment-and-grading}
+
+| Assessment | Weight in final grade |
+| :---  | ---: |
+| In-class quizzes | 10% |
+| Homework assignments (2 assignments) | 20% |
+| Labs (2 labs) | 20% |
+| Final exam | 50% |
+
 ## Teaching team
 
 | Name | Role | Contact |

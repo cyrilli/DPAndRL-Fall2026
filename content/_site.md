@@ -30,26 +30,11 @@ website:
     collapse-level: 1
     contents:
     - notes/index.md
-    - section: Worked notes
+    - section: Chapters
       contents:
+      - notes/sequential-decisions.md
+      - notes/value-functions.md
       - notes/bellman-operators.md
-    - section: Lecture outlines
-      contents:
-      - lectures/01.md
-      - lectures/02.md
-      - lectures/03.md
-      - lectures/04.md
-      - lectures/05.md
-      - lectures/06.md
-      - lectures/07.md
-      - lectures/08.md
-      - lectures/09.md
-      - lectures/10.md
-      - lectures/11.md
-      - lectures/12.md
-      - lectures/13.md
-      - lectures/14.md
-      - lectures/15.md
   page-footer:
     left: Dynamic Programming and Reinforcement Learning · Fall 2026
     right: Tsinghua University

@@ -6,6 +6,8 @@ toc: false
 
 Contact [Zhengyu Ye](mailto:zy-ye20@mails.tsinghua.edu.cn) for assignment-related questions and grading.
 
+Two homework assignments and two lab assessments are planned. See [Assessment and grading](index.md#assessment-and-grading) for the proposed weights.
+
 ## Assignment releases
 
 No assignments have been released for Fall 2026. Confirmed assignments, instructions and deadlines will appear here.

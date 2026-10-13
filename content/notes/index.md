@@ -1,35 +1,22 @@
 ---
 title: Course notes
-sidebar: false
+sidebar: notes
 body-classes: course-notes
 toc: false
 ---
 
-Notes develop selected ideas in more detail. The [schedule](../schedule.md) lists the class dates and available materials.
+These notes explain the concepts and mathematical reasoning behind dynamic programming and reinforcement learning. They connect the ideas introduced in lectures through definitions, worked examples, and self-contained derivations.
 
-## Worked notes
+1. **[Sequential decisions and Markov decision processes](sequential-decisions.md)** · Lecture 1
 
-- [Bellman operators and contraction](bellman-operators.md): discounted finite MDPs, the contraction argument, and convergence of value iteration.
+   How actions affect future choices; states, transitions, rewards, and policies; the distinction between planning and learning.
 
-## Lecture outlines
+2. **[Returns, value functions, and Bellman equations](value-functions.md)** · Lecture 2
 
-### Dynamic programming
+   How to evaluate long-term consequences, derive the policy Bellman equations, and interpret state and action values through a worked example.
 
-1. [Sequential decisions and dynamic programming](../lectures/01.md)
-2. [Finite-horizon DP and shortest paths](../lectures/02.md)
-3. [Stochastic dynamic programming](../lectures/03.md)
-4. [Infinite-horizon problems](../lectures/04.md)
-5. [Value iteration and policy iteration](../lectures/05.md)
-6. [Approximate DP and online planning](../lectures/06.md)
-7. [Lab 1: resource-constrained path planning](../lectures/07.md)
+3. **[Bellman operators, fixed points, and optimal policies](bellman-operators.md)** · Lecture 3
 
-### Reinforcement learning
+   How monotonicity and contraction give unique solutions, why a greedy policy attains the optimal return, and how residuals bound value error.
 
-8. [Bandits, exploration and regret](../lectures/08.md)
-9. [Monte Carlo methods](../lectures/09.md)
-10. [Temporal-difference learning and control](../lectures/10.md)
-11. [Multi-agent reinforcement learning](../lectures/11.md)
-12. [Function approximation and deep Q-learning](../lectures/12.md)
-13. [Policy gradients and actor-critic methods](../lectures/13.md)
-14. [Reinforcement learning for language models](../lectures/14.md)
-15. [Lab 2: learning for sequential decisions](../lectures/15.md)
+The [schedule](../schedule.md) provides the lecture slides, and the [resources page](../resources.md) lists complementary readings.
