@@ -11,9 +11,9 @@ Tuesdays, 09:50–12:15 · Teaching Building 4 (第四教室楼), Room 4401.
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | 2026-09-15 | 1 | Course Overview, Intro to DP and RL | [Slides](materials/slides/DPRL_lec01_course_overview_and_rl_intro_post.pdf) |
 | 2 | 2026-09-22 | 2 | Value Functions and Structural Properties of MDPs | [Slides](materials/slides/DPRL_lec02_value_functions_and_bellman_equations_post.pdf) |
-| 3 | 2026-09-29 | 3 | Bellman Operators, Fixed Points, and Optimal Policies | [Slides](materials/slides/DPRL_lec04_value_iteration_and_policy_iteration.pdf) |
+| 3 | 2026-09-29 | 3 | Bellman Operators, Fixed Points, and Optimal Policies | [Slides](materials/slides/DPRL_lec03_bellman_operators_and_optimal_policies_post.pdf) |
 | 4 | 2026-10-06 | — | **National Day holiday** — No class; no makeup scheduled. | — |
-| 5 | 2026-10-13 | 4 | Value iteration and policy iteration *(tentative)* | [Slides](materials/slides/) |
+| 5 | 2026-10-13 | 4 | Value iteration and policy iteration *(tentative)* | [Slides](materials/slides/DPRL_lec04_value_iteration_and_policy_iteration.pdf) |
 | 6 | 2026-10-20 | 5 | Finite-horizon DP and online planning *(tentative)* | — |
 | 7 | 2026-10-27 | 6 | Learning from sampled experience: MC, TD, and Q-learning *(tentative)* | — |
 | 8 | 2026-11-03 | 7 | Lab 1: sequential decision modeling and dynamic programming | — |
