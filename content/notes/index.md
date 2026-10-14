@@ -19,4 +19,8 @@ These notes explain the concepts and mathematical reasoning behind dynamic progr
 
    How monotonicity and contraction give unique solutions, why a greedy policy attains the optimal return, and how residuals bound value error.
 
+4. **[Value iteration and policy iteration](value-and-policy-iteration.md)** · Lecture 4
+
+   How to compute values and policies with a known model, certify the accuracy of a result, and understand the guarantees of exact policy iteration.
+
 The [schedule](../schedule.md) provides the lecture slides, and the [resources page](../resources.md) lists complementary readings.

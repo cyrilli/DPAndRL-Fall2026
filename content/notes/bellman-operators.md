@@ -521,4 +521,4 @@ The distinction between evaluating a specified policy and optimizing decisions r
 
 This note develops [Lecture 3's slides](../materials/slides/DPRL_lec03_bellman_operators_and_optimal_policies_post.pdf). The [reading list](../resources.md) gives complementary references.
 
-[Previous: Returns, value functions, and Bellman equations](value-functions.md) · [All course notes](index.md)
+[Previous: Returns, value functions, and Bellman equations](value-functions.md) · [Next: Value iteration and policy iteration](value-and-policy-iteration.md) · [All course notes](index.md)

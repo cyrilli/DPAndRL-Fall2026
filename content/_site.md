@@ -35,6 +35,7 @@ website:
       - notes/sequential-decisions.md
       - notes/value-functions.md
       - notes/bellman-operators.md
+      - notes/value-and-policy-iteration.md
   page-footer:
     left: Dynamic Programming and Reinforcement Learning · Fall 2026
     right: Tsinghua University
