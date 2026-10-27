@@ -15,11 +15,11 @@ Tuesdays, 09:50–12:15 · Teaching Building 4 (第四教室楼), Room 4401.
 | 4 | 2026-10-06 | — | **National Day holiday** — No class; no makeup scheduled. | — |
 | 5 | 2026-10-13 | 4 | Value iteration and policy iteration | [Slides](materials/slides/DPRL_lec04_value_iteration_and_policy_iteration.pdf) |
 | 6 | 2026-10-20 | 5 | Finite-horizon DP and online planning | [Slides](materials/slides/DPRL_lec05_finite_horizon_dp_and_online_planning.pdf) |
-| 7 | 2026-10-27 | 6 | Learning from sampled experience: MC, TD, and Q-learning *(tentative)* | — |
+| 7 | 2026-10-27 | 6 | Function Approximation and Approximate DP | [Slides](materials/slides/DPRL_lec06_function_approximation_and_lsvi.pdf) |
 | 8 | 2026-11-03 | 7 | Lab 1: sequential decision modeling and dynamic programming | — |
-| 9 | 2026-11-10 | 8 | Linear bandits: optimism and regret *(tentative)* | — |
-| 10 | 2026-11-17 | 9 | Bandit limits and the connection to linear MDPs *(tentative)* | — |
-| 11 | 2026-11-24 | 10 | Value approximation and deep Q-learning *(tentative)* | — |
+| 9 | 2026-11-10 | 8 | Learning from Experience: MC, TD, and Q-learning *(tentative)* | — |
+| 10 | 2026-11-17 | 9 | From Fitted Q-learning to DQN *(tentative)* | — |
+| 11 | 2026-11-24 | 10 | Exploration: Linear Bandits and Linear MDPs *(tentative)* | — |
 | 12 | 2026-12-01 | 11 | Policy gradients and actor–critic *(tentative)* | — |
 | 13 | 2026-12-08 | 12 | Lab 2: reinforcement learning for sequential decision problems | — |
 | 14 | 2026-12-15 | 13 | PPO: objective and training loop *(tentative)* | — |
