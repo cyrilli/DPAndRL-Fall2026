@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" width="960" height="800" role="img" aria-labelledby="title desc">
+  <title id="title">One Monte Carlo tree search simulation selects a path, expands the tree, and rolls out</title>
+  <desc id="desc">The shaded region is the tree stored before this simulation. Rounded boxes are decision states and small circles are chance nodes. The purple path chooses an action at the root, samples an outcome, and continues through a stored state. Another sampled outcome reaches a new state outside the shaded region; that state is added to the tree. A dashed rollout then follows a policy to the terminal payoff without storing every later state. The next figure explains return backup. The real system does not move during simulation; the next run restarts at the same root with a larger tree and updated statistics.</desc>
+  <defs>
+    <marker id="purple-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#75566f"/></marker>
+    <marker id="gray-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#aaa19a"/></marker>
+  </defs>
+  <rect width="960" height="800" fill="#fcfbf8"/>
+  <g font-family="Arial, sans-serif" fill="#363432">
+    <text x="36" y="38" font-family="Georgia, serif" font-size="28">One simulation grows the tree</text>
+    <text x="36" y="73" font-size="19" fill="#746d66">The purple path is the sampled path in this run; other branches remain available.</text>
+
+    <rect x="38" y="92" width="28" height="20" rx="5" fill="#fcfbf8" stroke="#75566f" stroke-width="1.5"/>
+    <text x="78" y="109" font-size="17">decision: choose an action</text>
+    <circle cx="387" cy="102" r="8" fill="#fcfbf8" stroke="#75566f" stroke-width="1.5"/>
+    <text x="407" y="109" font-size="17">chance: sample an outcome</text>
+
+    <rect x="36" y="130" width="574" height="312" rx="12" fill="#f0ece8" stroke="#e3ddd5" stroke-width="1.5"/>
+    <text x="52" y="155" font-size="17" fill="#746d66">Tree before this simulation</text>
+
+    <!-- Unselected actions and outcomes in the existing tree. -->
+    <g fill="none" stroke="#aaa19a" stroke-width="1.7" marker-end="url(#gray-arrow)">
+      <path d="M352 207 L455 252"/>
+      <path d="M459 269 L415 305"/>
+      <path d="M469 268 L550 305"/>
+      <path d="M178 269 L247 305"/>
+      <path d="M125 392 L208 399"/>
+    </g>
+    <g fill="#fcfbf8" stroke="#aaa19a" stroke-width="1.5">
+      <circle cx="463" cy="260" r="10"/>
+      <rect x="200" y="308" width="110" height="42" rx="7"/>
+      <rect x="360" y="308" width="110" height="42" rx="7"/>
+      <rect x="500" y="308" width="94" height="42" rx="7"/>
+      <rect x="212" y="378" width="130" height="42" rx="7"/>
+    </g>
+    <g font-size="18" text-anchor="middle" fill="#746d66">
+      <text x="255" y="335">state</text>
+      <text x="415" y="335">state</text>
+      <text x="547" y="335">state</text>
+      <text x="277" y="405">stored state</text>
+    </g>
+
+    <!-- The sampled path alternates chosen actions and sampled outcomes. -->
+    <g fill="none" stroke="#75566f" stroke-width="3" marker-end="url(#purple-arrow)">
+      <path d="M284 207 L178 252"/>
+      <path d="M165 269 L120 305"/>
+      <path d="M115 351 V378"/>
+      <path d="M115 404 V493"/>
+    </g>
+    <g stroke="#75566f" stroke-width="2" fill="#fcfbf8">
+      <rect x="240" y="165" width="155" height="46" rx="8"/>
+      <circle cx="170" cy="260" r="10"/>
+      <rect x="50" y="308" width="130" height="42" rx="7"/>
+      <circle cx="115" cy="392" r="10"/>
+    </g>
+    <g font-size="19" text-anchor="middle">
+      <text x="317" y="194">current root</text>
+      <text x="115" y="335">stored state</text>
+    </g>
+    <g font-size="17" fill="#75566f">
+      <text x="55" y="234">choose action</text>
+      <text x="44" y="271">sample</text>
+      <text x="44" y="294">outcome</text>
+      <text x="132" y="374">choose action</text>
+      <text x="133" y="476">sample outcome</text>
+    </g>
+
+    <rect x="45" y="497" width="140" height="48" rx="8" fill="#e6dce4" stroke="#75566f" stroke-width="2.5"/>
+    <text x="115" y="527" font-size="21" text-anchor="middle" fill="#75566f">new node</text>
+
+    <!-- A path outside the stored frontier is simulated but need not be saved. -->
+    <path d="M115 548 C115 624 270 634 431 634" fill="none" stroke="#75566f" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#purple-arrow)"/>
+    <text x="208" y="586" font-size="18" fill="#75566f">follow policy b</text>
+    <text x="208" y="611" font-size="18" fill="#75566f">and sample outcomes</text>
+    <rect x="440" y="604" width="151" height="60" rx="22" fill="#fcfbf8" stroke="#746d66" stroke-width="1.5"/>
+    <text x="515" y="629" font-size="20" text-anchor="middle">terminal</text>
+    <text x="515" y="652" font-size="17" text-anchor="middle" fill="#746d66">add g; no action</text>
+
+    <!-- The phase labels track the corresponding parts of the same path. -->
+    <g fill="#75566f">
+      <circle cx="652" cy="183" r="16"/>
+      <circle cx="652" cy="508" r="16"/>
+      <circle cx="652" cy="604" r="16"/>
+    </g>
+    <g fill="#fcfbf8" font-size="19" text-anchor="middle">
+      <text x="652" y="190">1</text><text x="652" y="515">2</text><text x="652" y="611">3</text>
+    </g>
+    <g font-size="22" fill="#75566f">
+      <text x="679" y="190">Select</text>
+      <text x="679" y="515">Expand</text>
+      <text x="679" y="611">Roll out</text>
+    </g>
+    <g font-size="18">
+      <text x="636" y="227">Use stored action statistics.</text>
+      <text x="636" y="253">Choose actions; sample</text>
+      <text x="636" y="279">outcomes from the model.</text>
+      <text x="636" y="549">Add the newly reached state</text>
+      <text x="636" y="575">to the stored tree.</text>
+      <text x="636" y="645">Continue under policy b.</text>
+      <text x="636" y="671">Later states need not be stored.</text>
+    </g>
+
+    <line x1="36" y1="700" x2="924" y2="700" stroke="#e3ddd5"/>
+    <text x="36" y="729" font-size="19" fill="#75566f">4. Back up returns and update statistics — illustrated next.</text>
+    <text x="36" y="756" font-size="18">The real system stays at the root while we simulate.</text>
+    <text x="36" y="783" font-size="18" fill="#746d66">Next run: same root, larger stored tree, updated statistics.</text>
+  </g>
+</svg>

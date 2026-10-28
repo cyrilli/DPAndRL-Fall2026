@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 590" width="960" height="590" role="img" aria-labelledby="title desc">
+<title id="title">Zero error at observed inputs does not establish the unobserved target</title>
+<desc id="desc">The input states are zero, one, and two, with one fixed action. Observed labels are zero at input zero and one at input one. The fitted rule q-hat equals x predicts two at input two, shown as an open purple circle. Another possible target f equals x plus two x times x minus one agrees at both observed inputs but gives six at input two. The vertical gap is four. This constructed function is a possibility, not a true target inferred from the data.</desc>
+<rect width="960" height="590" fill="#fcfbf8"/>
+<g font-family="Arial, sans-serif" fill="#363432">
+<text x="36" y="40" font-size="27" fill="#363432" text-anchor="start" font-family="Georgia, serif">The same observed labels allow different unseen targets</text>
+<text x="36" y="77" font-size="18" fill="#746d66" text-anchor="start">Three input states: x ∈ {0, 1, 2}; one fixed action. The fitted rule is q̂(x) = x.</text>
+<line x1="100" y1="332" x2="400" y2="332" stroke="#e3ddd5" stroke-width="1"/>
+<text x="84" y="338" font-size="18" fill="#746d66" text-anchor="end">2</text>
+<line x1="100" y1="240" x2="400" y2="240" stroke="#e3ddd5" stroke-width="1"/>
+<text x="84" y="246" font-size="18" fill="#746d66" text-anchor="end">4</text>
+<line x1="100" y1="148" x2="400" y2="148" stroke="#e3ddd5" stroke-width="1"/>
+<text x="84" y="154" font-size="18" fill="#746d66" text-anchor="end">6</text>
+<line x1="100" y1="424" x2="444" y2="424" stroke="#746d66" stroke-width="1.7"/>
+<line x1="100" y1="424" x2="100" y2="110" stroke="#746d66" stroke-width="1.7"/>
+<path d="M444 424 l-9 -4 v8 Z M100 110 l-4 9 h8 Z" fill="#746d66"/>
+<text x="100" y="453" font-size="19" fill="#746d66" text-anchor="middle">0</text>
+<text x="235" y="453" font-size="19" fill="#746d66" text-anchor="middle">1</text>
+<text x="370" y="453" font-size="19" fill="#746d66" text-anchor="middle">2</text>
+<text x="274" y="489" font-size="21" fill="#363432" text-anchor="middle">Input state x</text>
+<text x="47" y="269" transform="rotate(-90 47 269)" font-size="20" text-anchor="middle">Target or prediction value</text>
+<line x1="370" y1="424" x2="370" y2="148" stroke="#746d66" stroke-width="1.3" stroke-dasharray="4 6"/>
+<circle cx="100" cy="424" r="6" fill="#363432"/><circle cx="235" cy="378" r="6" fill="#363432"/>
+<circle cx="370" cy="332" r="7" fill="#fcfbf8" stroke="#75566f" stroke-width="3"/><circle cx="370" cy="148" r="6" fill="#746d66"/>
+<text x="216" y="124" font-size="20" fill="#746d66" text-anchor="start">possible target 6</text>
+<text x="196" y="310" font-size="20" fill="#75566f" text-anchor="start">prediction 2</text>
+<line x1="416" y1="153" x2="416" y2="327" stroke="#75566f" stroke-width="2"/>
+<path d="M416 151 l-4 9 h8 Z M416 329 l-4 -9 h8 Z" fill="#75566f"/>
+<text x="433" y="246" font-size="25" fill="#75566f" text-anchor="start" font-family="Georgia, serif">4</text>
+<circle cx="105" cy="527" r="5.5" fill="#363432"/>
+<text x="121" y="533" font-size="18" fill="#746d66" text-anchor="start">observed labels</text>
+<line x1="500" y1="106" x2="500" y2="533" stroke="#e3ddd5" stroke-width="1.5"/>
+<text x="536" y="135" font-size="21" fill="#75566f" text-anchor="start">Construct another possible target</text>
+<text x="536" y="181" font-size="27" fill="#363432" text-anchor="start" font-family="Georgia, serif">f(x) = x + 2x(x − 1)</text>
+<text x="536" y="229" font-size="20" fill="#363432" text-anchor="start">The added term is:</text>
+<text x="560" y="275" font-size="21" fill="#363432" text-anchor="start">at x = 0</text>
+<text x="841" y="275" font-size="24" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="560" y="316" font-size="21" fill="#363432" text-anchor="start">at x = 1</text>
+<text x="841" y="316" font-size="24" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="560" y="357" font-size="21" fill="#363432" text-anchor="start">at x = 2</text>
+<text x="841" y="357" font-size="24" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">4</text>
+<text x="536" y="407" font-size="19" fill="#363432" text-anchor="start">Same labels at x = 0 and x = 1.</text>
+<text x="536" y="443" font-size="22" fill="#75566f" text-anchor="start" font-family="Georgia, serif">At x = 2:  f(2) = 2 + 4 = 6.</text>
+<text x="536" y="492" font-size="20" fill="#363432" text-anchor="start">If f is the target, the error is 4.</text>
+<text x="36" y="575" font-size="18" fill="#746d66" text-anchor="start">No label at x = 2 was observed. This f is a possibility, not a target inferred from the data.</text>
+</g></svg>

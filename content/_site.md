@@ -36,6 +36,8 @@ website:
       - notes/value-functions.md
       - notes/bellman-operators.md
       - notes/value-and-policy-iteration.md
+      - notes/finite-horizon-dp-and-online-planning.md
+      - notes/function-approximation-and-lsvi.md
   page-footer:
     left: Dynamic Programming and Reinforcement Learning · Fall 2026
     right: Tsinghua University

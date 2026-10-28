@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" role="img" aria-labelledby="title desc">
+<title id="title">Ridge trades increased squared fit error for a smaller weight penalty</title>
+<desc id="desc">Two labels are one and three, and both predictions equal the scalar weight. With lambda two, the objective adds squared fit error to twice the weight squared. At weight two, fit error is two and penalty eight, total ten. At weight one, fit error is four and penalty two, total six. All bar segments use the same horizontal scale.</desc>
+<rect width="960" height="530" fill="#fcfbf8"/>
+<g font-family="Arial, sans-serif" fill="#363432">
+<text x="36" y="40" font-size="27" fill="#363432" text-anchor="start" font-family="Georgia, serif">A larger fit error can still give a smaller total loss</text>
+<text x="36" y="77" font-size="18" fill="#746d66" text-anchor="start">Labels: (1, 3). Both predictions equal w. Compare the same objective, with λ = 2.</text>
+<rect x="36" y="111" width="23" height="23" rx="0" fill="#75566f" stroke="#75566f" stroke-width="1.5"/>
+<text x="72" y="131" font-size="22" fill="#363432" text-anchor="start" font-family="Georgia, serif">squared fit error = (w − 1)² + (w − 3)²</text>
+<rect x="610" y="111" width="23" height="23" rx="0" fill="#e7dee9" stroke="#75566f" stroke-width="1.5"/>
+<text x="646" y="131" font-size="22" fill="#363432" text-anchor="start" font-family="Georgia, serif">weight penalty = 2w²</text>
+<text x="300" y="187" font-size="18" fill="#75566f" text-anchor="start">Fit error</text>
+<text x="550" y="187" font-size="18" fill="#746d66" text-anchor="start">Penalty</text>
+<text x="50" y="252" font-size="27" fill="#363432" text-anchor="start" font-family="Georgia, serif">w = 2</text>
+<text x="50" y="283" font-size="18" fill="#746d66" text-anchor="start">predictions (2, 2)</text>
+<rect x="300" y="224" width="104" height="48" rx="0" fill="#75566f" stroke="#75566f" stroke-width="1.5"/>
+<rect x="404" y="224" width="416" height="48" rx="0" fill="#e7dee9" stroke="#75566f" stroke-width="1.5"/>
+<text x="352" y="256" font-size="25" fill="#fcfbf8" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="612" y="256" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">8</text>
+<text x="835" y="256" font-size="24" fill="#363432" text-anchor="start" font-family="Georgia, serif">= 10</text>
+<text x="50" y="360" font-size="27" fill="#363432" text-anchor="start" font-family="Georgia, serif">w = 1</text>
+<text x="50" y="391" font-size="18" fill="#746d66" text-anchor="start">predictions (1, 1)</text>
+<rect x="300" y="332" width="208" height="48" rx="0" fill="#75566f" stroke="#75566f" stroke-width="1.5"/>
+<rect x="508" y="332" width="104" height="48" rx="0" fill="#e7dee9" stroke="#75566f" stroke-width="1.5"/>
+<text x="404" y="364" font-size="25" fill="#fcfbf8" text-anchor="middle" font-family="Georgia, serif">4</text>
+<text x="560" y="364" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="627" y="364" font-size="24" fill="#363432" text-anchor="start" font-family="Georgia, serif">= 6</text>
+<line x1="300" y1="426" x2="820" y2="426" stroke="#746d66" stroke-width="1.4"/>
+<line x1="300" y1="421" x2="300" y2="432" stroke="#746d66" stroke-width="1.4"/>
+<text x="300" y="457" font-size="18" fill="#746d66" text-anchor="middle">0</text>
+<line x1="404" y1="421" x2="404" y2="432" stroke="#746d66" stroke-width="1.4"/>
+<text x="404" y="457" font-size="18" fill="#746d66" text-anchor="middle">2</text>
+<line x1="508" y1="421" x2="508" y2="432" stroke="#746d66" stroke-width="1.4"/>
+<text x="508" y="457" font-size="18" fill="#746d66" text-anchor="middle">4</text>
+<line x1="612" y1="421" x2="612" y2="432" stroke="#746d66" stroke-width="1.4"/>
+<text x="612" y="457" font-size="18" fill="#746d66" text-anchor="middle">6</text>
+<line x1="716" y1="421" x2="716" y2="432" stroke="#746d66" stroke-width="1.4"/>
+<text x="716" y="457" font-size="18" fill="#746d66" text-anchor="middle">8</text>
+<line x1="820" y1="421" x2="820" y2="432" stroke="#746d66" stroke-width="1.4"/>
+<text x="820" y="457" font-size="18" fill="#746d66" text-anchor="middle">10</text>
+<text x="857" y="431" font-size="18" fill="#746d66" text-anchor="start">loss</text>
+<text x="36" y="507" font-size="22" fill="#75566f" text-anchor="start">Fit error rises by 2; penalty falls by 6; total loss falls by 4.</text>
+</g></svg>

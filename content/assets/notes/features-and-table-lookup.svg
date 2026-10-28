@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 690" width="960" height="690" role="img" aria-labelledby="title desc">
+<title id="title">A table lookup, shared semantic features, and one-hot selection give the same query value</title>
+<desc id="desc">For room B and action exit, the table value is one. Semantic features are baseline one, room C indicator zero, and exit indicator one. Weights two, three, and minus one give one. With one-hot features for all six named pairs, the fourth coordinate is one and selects the stored fourth entry one. Three semantic weights reproduce this structured table; one-hot features use all six entries and can represent any table.</desc>
+<rect width="960" height="690" fill="#fcfbf8"/>
+<g font-family="Arial, sans-serif" fill="#363432">
+<text x="36" y="40" font-size="28" fill="#363432" text-anchor="start" font-family="Georgia, serif">One query, three ways to get its value</text>
+<text x="36" y="77" font-size="20" fill="#75566f" text-anchor="start">Query: room B, action exit</text>
+<rect x="36" y="109" width="274" height="273" rx="8" fill="#fcfbf8" stroke="#e3ddd5" stroke-width="1.5"/>
+<text x="173" y="143" font-size="22" fill="#75566f" text-anchor="middle">Table lookup</text>
+<text x="77" y="185" font-size="18" fill="#746d66" text-anchor="middle">Room</text>
+<text x="170" y="185" font-size="18" fill="#746d66" text-anchor="middle">wait</text>
+<text x="259" y="185" font-size="18" fill="#746d66" text-anchor="middle">exit</text>
+<line x1="50" y1="198" x2="296" y2="198" stroke="#e3ddd5" stroke-width="1.5"/>
+<rect x="219" y="253" width="77" height="52" rx="5" fill="#e7dee9" stroke="#75566f" stroke-width="1.5"/>
+<text x="77" y="235" font-size="24" fill="#363432" text-anchor="middle" font-family="Georgia, serif">A</text>
+<text x="170" y="235" font-size="24" fill="#363432" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="259" y="235" font-size="26" fill="#363432" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="77" y="287" font-size="24" fill="#363432" text-anchor="middle" font-family="Georgia, serif">B</text>
+<text x="170" y="287" font-size="24" fill="#363432" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="259" y="287" font-size="26" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="77" y="339" font-size="24" fill="#363432" text-anchor="middle" font-family="Georgia, serif">C</text>
+<text x="170" y="339" font-size="24" fill="#363432" text-anchor="middle" font-family="Georgia, serif">5</text>
+<text x="259" y="339" font-size="26" fill="#363432" text-anchor="middle" font-family="Georgia, serif">4</text>
+<rect x="340" y="109" width="584" height="273" rx="8" fill="#fcfbf8" stroke="#e3ddd5" stroke-width="1.5"/>
+<text x="366" y="143" font-size="22" fill="#75566f" text-anchor="start">Shared semantic features</text>
+<text x="510" y="186" font-size="18" fill="#746d66" text-anchor="middle">baseline</text>
+<text x="667" y="186" font-size="18" fill="#746d66" text-anchor="middle">room C?</text>
+<text x="827" y="186" font-size="18" fill="#746d66" text-anchor="middle">exit?</text>
+<text x="365" y="226" font-size="18" fill="#746d66" text-anchor="start">features</text>
+<text x="365" y="274" font-size="18" fill="#746d66" text-anchor="start">weights</text>
+<text x="510" y="226" font-size="25" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="510" y="274" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="667" y="226" font-size="25" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="667" y="274" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">3</text>
+<text x="827" y="226" font-size="25" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="827" y="274" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">−1</text>
+<line x1="366" y1="293" x2="898" y2="293" stroke="#e3ddd5" stroke-width="1.5"/>
+<text x="632" y="337" font-size="25" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">1 × 2 + 0 × 3 + 1 × (−1) = 1</text>
+<rect x="36" y="411" width="888" height="228" rx="8" fill="#fcfbf8" stroke="#e3ddd5" stroke-width="1.5"/>
+<text x="61" y="448" font-size="22" fill="#75566f" text-anchor="start">One-hot features: select one of six stored entries</text>
+<rect x="576" y="469" width="98" height="135" rx="5" fill="#e7dee9" stroke="#75566f" stroke-width="1.5"/>
+<text x="265" y="494" font-size="17" fill="#746d66" text-anchor="middle">(A, wait)</text>
+<text x="385" y="494" font-size="17" fill="#746d66" text-anchor="middle">(A, exit)</text>
+<text x="505" y="494" font-size="17" fill="#746d66" text-anchor="middle">(B, wait)</text>
+<text x="625" y="494" font-size="17" fill="#75566f" text-anchor="middle">(B, exit)</text>
+<text x="745" y="494" font-size="17" fill="#746d66" text-anchor="middle">(C, wait)</text>
+<text x="865" y="494" font-size="17" fill="#746d66" text-anchor="middle">(C, exit)</text>
+<text x="61" y="535" font-size="18" fill="#746d66" text-anchor="start">features</text>
+<text x="61" y="583" font-size="18" fill="#746d66" text-anchor="start">stored weights</text>
+<text x="265" y="535" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="265" y="583" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="385" y="535" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="385" y="583" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="505" y="535" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="505" y="583" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">2</text>
+<text x="625" y="535" font-size="25" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="625" y="583" font-size="25" fill="#75566f" text-anchor="middle" font-family="Georgia, serif">1</text>
+<text x="745" y="535" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="745" y="583" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">5</text>
+<text x="865" y="535" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">0</text>
+<text x="865" y="583" font-size="25" fill="#363432" text-anchor="middle" font-family="Georgia, serif">4</text>
+<text x="61" y="622" font-size="19" fill="#75566f" text-anchor="start">Only the fourth weight contributes: the prediction is 1.</text>
+<text x="36" y="675" font-size="18" fill="#746d66" text-anchor="start">Semantic features: 3 weights for this structured table. One-hot: all 6 entries, no compression.</text>
+</g></svg>

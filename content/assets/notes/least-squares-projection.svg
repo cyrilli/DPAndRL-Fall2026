@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 550" width="960" height="550" role="img" aria-labelledby="title desc">
+  <title id="title">Least squares projects the target vector onto the possible prediction vectors</title>
+  <desc id="desc">The horizontal and vertical axes are predictions for samples 1 and 2. With both features equal to one, possible prediction vectors are points of the form (w,w) on a diagonal line. The target is (1,3). Its closest point on the line is (2,2), reached by a perpendicular segment. The axes have equal scales.</desc>
+  <defs>
+    <marker id="axis" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#746d66"/></marker>
+  </defs>
+  <rect width="960" height="550" fill="#fcfbf8"/>
+  <g font-family="Arial, sans-serif" fill="#363432">
+    <text x="36" y="39" font-family="Georgia, serif" font-size="27">One point records two predictions</text>
+    <g stroke="#e3ddd5" stroke-width="1">
+      <path d="M220 430 V106 M310 430 V106 M400 430 V106"/>
+      <path d="M130 340 H454 M130 250 H454 M130 160 H454"/>
+    </g>
+    <g stroke="#746d66" stroke-width="1.7" marker-end="url(#axis)" fill="none">
+      <path d="M130 430 H480"/>
+      <path d="M130 430 V82"/>
+    </g>
+    <g font-size="18" fill="#746d66" text-anchor="middle">
+      <text x="130" y="456">0</text>
+      <text x="220" y="456">1</text>
+      <text x="310" y="456">2</text>
+      <text x="400" y="456">3</text>
+    </g>
+    <g font-size="18" fill="#746d66" text-anchor="end">
+      <text x="115" y="346">1</text>
+      <text x="115" y="256">2</text>
+      <text x="115" y="166">3</text>
+    </g>
+    <text x="307" y="498" font-size="20" text-anchor="middle">Prediction for sample 1</text>
+    <text x="53" y="265" transform="rotate(-90 53 265)" font-size="20" text-anchor="middle">Prediction for sample 2</text>
+    <path d="M130 430 L454 106" stroke="#75566f" stroke-width="3" fill="none"/>
+    <path d="M220 160 L310 250" stroke="#363432" stroke-width="2" stroke-dasharray="7 6" fill="none"/>
+    <path d="M298 238 L310 226 L322 238" stroke="#746d66" stroke-width="1.5" fill="none"/>
+    <circle cx="220" cy="160" r="6" fill="#363432"/>
+    <circle cx="310" cy="250" r="6.5" fill="#75566f"/>
+    <g font-size="20">
+      <text x="232" y="139">target (1, 3)</text>
+      <text x="325" y="280" fill="#75566f">OLS (2, 2)</text>
+    </g>
+    <line x1="529" y1="100" x2="529" y2="458" stroke="#e3ddd5"/>
+    <g transform="translate(568 130)">
+      <text font-family="Georgia, serif" font-size="25" fill="#75566f">Allowed predictions</text>
+      <text y="40" font-family="Georgia, serif" font-size="28">(w, w)</text>
+      <g font-size="20">
+        <text y="83">Both samples receive</text>
+        <text y="112">the same prediction w.</text>
+        <text y="185" font-weight="bold">Squared fit error</text>
+        <text y="223" font-family="Georgia, serif" font-size="24">(w − 1)² + (w − 3)²</text>
+        <text y="271">This is the squared distance</text>
+        <text y="300">to the target point.</text>
+      </g>
+    </g>
+  </g>
+</svg>

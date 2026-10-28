@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="550" viewBox="0 0 960 550" role="img" aria-labelledby="title desc">
+<title id="title">Adding an uncertainty bonus can change the chosen action</title>
+<desc id="desc">Illustrative action a has fitted estimate four and bonus zero point two, for a total score of four point two. Action b has estimate three and bonus two, for total five. Selecting by estimates alone chooses a, while selecting by estimate plus bonus chooses b. Bonus widths and estimate widths share the same scale. These numbers illustrate the rule, not a calibrated confidence guarantee, and the bonus is not an environmental reward.</desc>
+<rect width="960" height="550" fill="#fcfbf8"/>
+<g font-family="Arial, sans-serif" fill="#363432">
+<text x="36" y="40" font-family="Georgia, serif" font-size="28">An uncertainty bonus can change which action we try</text>
+<text x="36" y="77" font-size="18" fill="#746d66">Illustrative scores; bonus sizes are supplied here, not statistically calibrated.</text>
+<rect x="220" y="108" width="18" height="18" fill="#75566f"/><text x="247" y="123" font-size="18">fitted estimate</text>
+<rect x="451" y="108" width="18" height="18" fill="#e7dde5" stroke="#75566f"/><text x="478" y="123" font-size="18">uncertainty bonus</text>
+<g font-size="21"><text x="83" y="209">action a</text><text x="83" y="299">action b</text></g>
+<rect x="220" y="175" width="432" height="54" fill="#75566f"/>
+<rect x="652" y="175" width="21.6" height="54" fill="#e7dde5" stroke="#75566f"/>
+<rect x="220" y="265" width="324" height="54" fill="#75566f"/>
+<rect x="544" y="265" width="216" height="54" fill="#e7dde5" stroke="#75566f"/>
+<g font-size="23" text-anchor="middle"><text x="436" y="209" fill="white">4</text><text x="382" y="299" fill="white">3</text><text x="652" y="299">2</text></g>
+<path d="M663 171 V151" stroke="#75566f"/><text x="663" y="143" font-size="19" text-anchor="middle" fill="#75566f">0.2</text>
+<g font-size="23"><text x="691" y="209">= 4.2</text><text x="779" y="299" fill="#75566f">= 5</text></g>
+<line x1="220" y1="346" x2="814" y2="346" stroke="#746d66" stroke-width="1.5"/>
+<g text-anchor="middle" font-size="17" fill="#746d66">
+<path d="M220 340 V352 M328 340 V352 M436 340 V352 M544 340 V352 M652 340 V352 M760 340 V352" stroke="#746d66"/>
+<text x="220" y="375">0</text><text x="328" y="375">1</text><text x="436" y="375">2</text><text x="544" y="375">3</text><text x="652" y="375">4</text><text x="760" y="375">5</text>
+</g>
+<g fill="#f3eff1" stroke="#e3ddd5" stroke-width="1.5"><rect x="36" y="408" width="424" height="69" rx="8"/><rect x="484" y="408" width="440" height="69" rx="8"/></g>
+<g font-size="21" text-anchor="middle"><text x="248" y="450">Estimate alone: choose a</text><text x="704" y="450" fill="#75566f">Estimate + bonus: choose b</text></g>
+<text x="36" y="521" font-size="18" fill="#746d66">The bonus changes the decision rule. The environment does not pay it as reward.</text>
+</g></svg>

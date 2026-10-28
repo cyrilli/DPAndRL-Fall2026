@@ -587,4 +587,4 @@ Only finitely many such changes can occur. At an optimal policy, its incumbent a
 
 This note develops the main material in the [Lecture 4 slides](../materials/slides/DPRL_lec04_value_iteration_and_policy_iteration.pdf). The policy-improvement and termination proofs above are optional reading, matching the optional proof section of the deck. The [reading list](../resources.md) provides complementary treatments.
 
-[Previous: Bellman operators, fixed points, and optimal policies](bellman-operators.md) · [All course notes](index.md)
+[Previous: Bellman operators, fixed points, and optimal policies](bellman-operators.md) · [Next: Finite-horizon DP and online planning](finite-horizon-dp-and-online-planning.md) · [All course notes](index.md)

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" role="img" aria-labelledby="title desc">
+  <title id="title">Stage 2 least squares assigns one mean target to each feature group</title>
+  <desc id="desc">The two unfinished-wait pairs, (0,q) and (1,q), have targets zero and share fitted value zero. The two unfinished-work pairs, (0,w) and (1,w), have targets minus one and seven but share fitted value three. The completed-wait pair, (2,q), has target ten and fitted value ten. Every pair is used once, with no regularization. The differing work targets cannot both be represented by one shared value.</desc>
+  <defs>
+    <marker id="down" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#75566f"/></marker>
+  </defs>
+  <rect width="960" height="510" fill="#fcfbf8"/>
+  <g font-family="Arial, sans-serif" fill="#363432">
+    <text x="36" y="39" font-family="Georgia, serif" font-size="27">Stage 2: five targets, three shared predictions</text>
+    <text x="36" y="75" font-size="18" fill="#746d66">Each pair is fitted once; no weight penalty.</text>
+    <g stroke="#e3ddd5" stroke-width="1.5">
+      <rect x="36" y="105" width="280" height="325" rx="10" fill="#fcfbf8"/>
+      <rect x="340" y="105" width="280" height="325" rx="10" fill="#f3eff1"/>
+      <rect x="644" y="105" width="280" height="325" rx="10" fill="#fcfbf8"/>
+    </g>
+    <g font-size="22" text-anchor="middle" fill="#75566f">
+      <text x="176" y="145">Unfinished: wait</text>
+      <text x="480" y="145">Unfinished: work</text>
+      <text x="784" y="145">Completed: wait</text>
+    </g>
+    <g font-size="17" fill="#746d66">
+      <text x="70" y="185">Pair</text><text x="235" y="185" text-anchor="middle">Target</text>
+      <text x="374" y="185">Pair</text><text x="539" y="185" text-anchor="middle">Target</text>
+      <text x="678" y="185">Pair</text><text x="843" y="185" text-anchor="middle">Target</text>
+    </g>
+    <g font-family="Georgia, serif" font-size="23">
+      <text x="70" y="221">(0, q)</text><text x="235" y="221" text-anchor="middle">0</text>
+      <text x="70" y="257">(1, q)</text><text x="235" y="257" text-anchor="middle">0</text>
+      <text x="374" y="221">(0, w)</text><text x="539" y="221" text-anchor="middle">−1</text>
+      <text x="374" y="257">(1, w)</text><text x="539" y="257" text-anchor="middle">7</text>
+      <text x="678" y="221">(2, q)</text><text x="843" y="221" text-anchor="middle">10</text>
+    </g>
+    <g fill="none" stroke="#75566f" stroke-width="2" marker-end="url(#down)">
+      <path d="M176 279 V315"/>
+      <path d="M480 279 V315"/>
+      <path d="M784 279 V315"/>
+    </g>
+    <g text-anchor="middle">
+      <g font-size="17" fill="#746d66">
+        <text x="176" y="346">One shared prediction</text>
+        <text x="480" y="346">One shared prediction</text>
+        <text x="784" y="346">One prediction</text>
+      </g>
+      <g font-family="Georgia, serif" font-size="27" fill="#75566f">
+        <text x="176" y="389">(0 + 0) / 2 = 0</text>
+        <text x="480" y="389">(−1 + 7) / 2 = 3</text>
+        <text x="784" y="389">10</text>
+      </g>
+    </g>
+    <text x="36" y="468" font-size="18" fill="#746d66">q = wait; w = work. Pairs in the same group must receive the same fitted value.</text>
+  </g>
+</svg>
