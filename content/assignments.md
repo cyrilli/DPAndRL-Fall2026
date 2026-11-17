@@ -4,28 +4,13 @@ sidebar: false
 toc: false
 ---
 
-Contact [Zhengyu Ye](mailto:zy-ye20@mails.tsinghua.edu.cn) for assignment-related questions and grading.
+The two written assignments cover dynamic programming and reinforcement learning. They also help you prepare for the closed-book written final examination. Show your reasoning and write explanations that you can reproduce independently.
 
-Two homework assignments and two lab assessments are planned. See [Assessment and grading](index.md#assessment-and-grading) for the proposed weights.
+| Assignment | Focus | Materials | Deadline |
+|:--|:--|:--|:--|
+| [Assignment 1](assignments/hw1.md) | Dynamic programming | [Student materials (ZIP)](materials/assignments/assignment-01/student-materials.zip) · [Assignment PDF](materials/assignments/assignment-01/assignment_en.pdf) | **December 1, 2026, 09:50 (UTC+8), before class** |
+| [Assignment 2](assignments/hw2.md) | Reinforcement learning | Not yet released | To be announced |
 
-## Assignment releases
+Submit Assignment 1 as one PDF through the university course system. Its Lean appendix is optional, ungraded, and requires no submission. See the [assignment page](assignments/hw1.md) for the full release information.
 
-No assignments have been released for Fall 2026. Confirmed assignments, instructions and deadlines will appear here.
-
-<!-- ## Written exercises
-
-The proposed exercises will cover modeling, Bellman recursions, policy evaluation and the analysis of learning algorithms.
-
-Release dates, grading weights and collaboration rules: to be announced.
-
-## Computational practice
-
-The course includes two lab sessions led by [Chengli Zhu](mailto:zhcl@tsinghua.edu.cn). The proposed topics are resource-constrained planning and learning for sequential decisions.
-
-See the proposed [lab directions](project.md).
-
-## Preparation
-
-Read the [first lecture study guide](lectures/01.md) and try the route-planning problem. This is a preparation activity, not a graded assignment.
-
-For programming preparation, review Python arrays, functions and basic numerical computation. The [Stanford Python and NumPy tutorial](https://cs231n.github.io/python-numpy-tutorial/) is a useful reference. -->
+Contact [Zhengyu Ye](mailto:zy-ye20@mails.tsinghua.edu.cn) for assignment-related questions and grading. The two lab assessments are separate from these written assignments; see [assessment and grading](index.md#assessment-and-grading).
