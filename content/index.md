@@ -9,7 +9,7 @@ toc: false
 
 ## Updates
 
-- **November 17:** [Assignment 1: Dynamic programming](assignments/hw1.md) is released. [Download the student materials](materials/assignments/assignment-01/student-materials.zip). Due **December 1 at 09:50 (UTC+8), before class**; submit one PDF through the university course system.
+- **November 17:** [Assignment 1: Dynamic programming](assignments/hw1.md) is released. [Download the student materials](materials/assignments/assignment-01/student-materials.zip). Due **December 1 at 09:50 (UTC+8), before class**; submit one PDF through [网络学堂 (Web Learning)](https://learn.tsinghua.edu.cn/).
 - **September 30:** Course website is up and the [slides for the first three lectures](schedule.md) are available.
 - **October 6:** National Day holiday. No class; no makeup scheduled.
 

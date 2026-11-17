@@ -20,7 +20,7 @@ This assignment uses one machine-maintenance model to connect finite-horizon pla
 |:--|:--|
 | Released | November 17, 2026 |
 | Deadline | **Tuesday, December 1, 2026, 09:50, before class (China Standard Time, UTC+8)** |
-| Submission | Upload **one PDF** to the university course system |
+| Submission | Upload **one PDF** to [网络学堂 (Web Learning)](https://learn.tsinghua.edu.cn/) |
 | Required work | Problems 1–4; 18 subquestions; 100 points |
 | Format | Typed answers or clear handwritten scans, with problem and subpart labels |
 | Estimated work | About 7–10 hours, including review and writing; more if substantial review is needed |
